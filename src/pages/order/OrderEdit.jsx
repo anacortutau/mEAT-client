@@ -23,7 +23,7 @@ function OrderEdit() {
             }
 
             await patchOrderService(id, editOrder)
-            navigate(`order/${id}/details`)
+            navigate("/order")
         }catch(error){
             navigate("/error")
         }

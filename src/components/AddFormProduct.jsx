@@ -38,25 +38,27 @@ function AddFormProduct(props) {
   return (
     <div>
 
-        <h3>Create New Product</h3>
-
-        <section class="form-create-product">
+       <section class="title-create-product">
 
        
+        <h3 class="create-product">Create New Product</h3>
 
+      
+           
+  
       <form onSubmit={handleSubmit}>
+        
         <br />
-        <label htmlFor="category">Category</label>
-        <section class="category">
-
-       
+        <section class="form-products">
+        <label  htmlFor="category">Category</label>
+        
         <select name="category" value={category} onChange={handleCategoryChange}>
             <option value="Dish">Dish</option>
             <option value="Garrison">Garrison</option>
             <option value="Dessert">Dessert</option>
             <option value="Beverage">Beverage</option>
         </select>
-        </section>
+       
         <br />
 
         <label htmlFor="name">Name</label>
@@ -75,7 +77,11 @@ function AddFormProduct(props) {
           onChange={handlePriceChange}
           checked={price}
         />
+         </section>
+        <br />
+        <br />
             <button class="home-main-button" type="submit">Add</button>
+            
     </form> 
     </section>
     </div>

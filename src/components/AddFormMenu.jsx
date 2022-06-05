@@ -38,10 +38,14 @@ function AddFormMenu(props) {
 
   return (
     <div>
+       <section class="title-create-menu">
 
-        <h3>Create New Menu</h3>
-
+        <h3 class="create-menu">Create New Menu</h3>
+        
       <form onSubmit={handleSubmit}>
+      <section class="form-menu">
+       
+        
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -49,15 +53,19 @@ function AddFormMenu(props) {
           onChange={handleNameChange}
           value={name}
         />
-
+        
+        <section class="form-menu">
+       
         <label htmlFor="products">Products</label>
         <input
           type="text"
           name="products"
           onChange={handleProducts}
           value={products}
+        
         />
-
+          </section>
+         
         <label htmlFor="price">Price</label>
         <input
           type="number"
@@ -65,8 +73,13 @@ function AddFormMenu(props) {
           onChange={handlePriceChange}
           checked={price}
         />
-            <button type="submit">Add</button>
+        </section>
+        <br />
+            <button  class="home-main-button" type="submit">Add</button>
+            
     </form> 
+    
+    </section>
     </div>
   )
 }

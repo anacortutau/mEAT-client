@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { getAllOrderService } from '../../services/order.services'
 
+//SACAR EL PEDIDO FILTRANDO POR EL NOMBRE DEL MENU Y EL NOMBRE DEL PRODUCTO
+//FALTA QUE FILTRE TAMBIEN POR EL NOMBRE, APELLIDOS, DIRRECION DEL USUARIO
+
 function OrderList() {
 
       //1. Estado para la data
@@ -22,10 +25,6 @@ function OrderList() {
           navigate("/")
       }
 
-      const handleSubmitTake = async(e) =>{
-          e.preventDefault()
-          navigate("/take")
-      }
 
       useEffect(()=>{
 
@@ -71,8 +70,10 @@ function OrderList() {
     <div>
     {/* <AddFormProduct getAllProducts= {getAllProducts}/>
     <hr/> */}
+    <main class="home-main">
 
-    <h3>Take Home</h3>
+   
+    <h3 class="home-main-tex">Take Home</h3>
 
     {allOrder === null && <h3>...Loading</h3>}
     {
@@ -89,11 +90,10 @@ function OrderList() {
     <form onSubmit={handleSubmitDelete}>
         <button type="sumbit">Delete</button>
     </form>
-    <form onSubmit={handleSubmitTake}>
-        <button type="sumbit">Teak Home</button>
-    </form>
-
+   
+   
     <form onSubmit={handleSubmitDelete}>
+    <section class="form-pay">
         <label htmlFor="name">Card holder</label>
         <input 
         type="text"
@@ -101,17 +101,20 @@ function OrderList() {
         onChange={handleNameChange}
         value={name}
         />
-
+        </section>
+        <section class="form-pay">
         <label htmlFor="number">Count Number</label>
         <input 
         type="number"
         name="number"
         onchange={handleNumberChange}
-        value={number}/> 
-
-
-         <button type="submit">Pay</button> 
+        value={number}
+        /> 
+         </section>
+         <button class="home-main-button" type="submit">Pay</button> 
     </form>
+   
+    </main>
    
     
 

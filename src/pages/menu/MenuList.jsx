@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import AddFormMenu from '../../components/AddFormMenu'
 import { getAllMenuService } from '../../services/menu.services'
 
+//SACAR EL LISTADO DE MENUS CON EL NOMBRE DE LOS PRODUCTOS
+
 
 function MenuList() {
 
@@ -60,7 +62,8 @@ function MenuList() {
 
   return (
     <div>
-         <h3>List Menu</h3>
+         <main class="home-main">
+         <h3 class="home-main-tex">List Menu</h3>
             {allMenu === null && <h3>...Loading</h3>}
         
             {
@@ -75,13 +78,12 @@ function MenuList() {
                 })
                 
             }
-        
-
 
             <AddFormMenu getAllMenus= {getAllMenus}/>
             <form onSubmit={handleSubmit}>
-                <button type="submit">Home</button>
+                <button class="home-main-button" type="submit">Home</button>
             </form>
+            </main>
     </div>
   )
 }

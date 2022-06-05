@@ -25,21 +25,23 @@ function Navbar() {
     return (
 
         <div>
+           
             <header>
                 <section class= "header-icons-container">
                 <section class="icons">
+                
 
                     
             {user !== null}
             {isLoggedIn === true ? (
                 <nav>
-                   
+                    
                     <NavLink to="/product" end={true} style={toggleStyles}>Products</NavLink>
                     <NavLink to="/menu" end={true} style={toggleStyles}>Menus</NavLink>
                     <NavLink to="/order"  style={toggleStyles}> Basket</NavLink>
                     <NavLink to="/opinion"  style={toggleStyles}> Your opinion is important</NavLink>
                     <button onClick={handleLogout}>Cerrar sesión</button>
-                  
+                    
                 </nav>
                 ) : (
                 

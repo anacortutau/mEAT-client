@@ -5,36 +5,49 @@ function Family() {
 
     const navigate = useNavigate()
 
-    const handleSubmit= async(e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         navigate("/signup")
     }
 
-    const handleSubmitHome = async(e) =>{
+    const handleSubmitHome = async (e) => {
         e.preventDefault()
 
         navigate("/")
     }
-  return (
-    <div> 
-       <h2> Welcome Family mEAT</h2>
+    return (
+        <div>
+            
+                <h2> Welcome Family mEAT</h2>
+                
 
-       <p>At mEAT we know that and take advantage of the benefits
-           Eat and receive mEATkoins to redeem for more ÑAM!
-       </p>
-        
-        <form onSubmit={handleSubmit}>
+                    <div class="container">
+                    <p>At mEAT we know that and take advantage of the benefits
+                        Eat and receive mEATkoins to redeem for more ÑAM!
+                    </p>
 
-            <button type="submit">Sign Up</button>
-        </form>
-        <form onSubmit={handleSubmitHome}>
+                    </div>
+               
+                
+            
 
-            <button type="submit">Home</button>
-        </form>
-        
+
+
+               
+
+            <form onSubmit={handleSubmit}>
+                <button class="home-main-button-family" type="submit">Sign Up</button>
+            </form>
+            <br />
+            <br />
+            <form onSubmit={handleSubmitHome}>
+                <button class="home-main-button-family-home" type="submit">Home</button>
+            </form>
+            
+
         </div>
-  )
+    )
 }
 
 export default Family
