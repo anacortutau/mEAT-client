@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useContext } from "react";
-import { loginService } from "../../services/auth.services";
+import { loginService, verifyService } from "../../services/auth.services";
 import {AuthContext} from "../../context/auth.context.js";
-import {useNavigate} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 
 function Login() {
 
@@ -12,10 +12,17 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isAdmin, setIsAdmin] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
+  
 
-    const handleEmailChange = (e) => setEmail(e.target.value);
-    const handlePasswordChange = (e) => setPassword(e.target.value);
+     const handleEmailChange = (e) => setEmail(e.target.value);
+     const handlePasswordChange = (e) => setPassword(e.target.value);
+     const handleIsAdmin = (e)=>setIsAdmin(e.target.value);
+
+   
+      
+
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -54,32 +61,39 @@ function Login() {
     <div>
 
             <h1>Log In</h1>
-
+            
+            <section class="form-login">
             <form onSubmit={handleLogin}>
-        <label>Email:</label>
+              <br />
+        <label>Email</label>
         <input
           type="email"
           name="email"
           value={email}
           onChange={handleEmailChange}
         />
-
-        <label>Password:</label>
+      <br />
+        <label>Password</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePasswordChange}
         />
+        {/* <div className="isAdminCkeckBox">
+          <label htmlFor="isAdmin">Admin</label>
+          <input type="checkbox"  name="isAdmin" checked={isAdmin} onChange={handleIsAdmin}/>
+          </div> */}
 
         {errorMessage !== null && <p>{errorMessage}</p>}
 
-        <button type="submit">Login</button>
+        <button class="home-main-button-login" type="submit">Login</button>
       </form>
-      
+      </section>
     </div>
   );
 }
+
 
 export default Login;
 

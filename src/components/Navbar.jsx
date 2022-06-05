@@ -25,23 +25,45 @@ function Navbar() {
     return (
 
         <div>
-            {user !== null && <p>Bienvenido a mEAT: {user.username}</p>}
+            <header>
+                <section class= "header-icons-container">
+                <section class="icons">
+
+                    
+            {user !== null}
             {isLoggedIn === true ? (
                 <nav>
-                    <NavLink to="/" style={toggleStyles}> Home </NavLink>
+                   
+                    <NavLink to="/product" end={true} style={toggleStyles}>Products</NavLink>
+                    <NavLink to="/menu" end={true} style={toggleStyles}>Menus</NavLink>
+                    <NavLink to="/order"  style={toggleStyles}> basket</NavLink>
+                    <NavLink to="/opinion"  style={toggleStyles}> Your opinion is important</NavLink>
                     <button onClick={handleLogout}>Cerrar sesión</button>
-
+                  
                 </nav>
                 ) : (
+                
+
+                
                 <nav>
-                    <NavLink to="/" style={toggleStyles}> Home </NavLink>
+                    
+                    <NavLink to="/" style={toggleStyles}>Welcome</NavLink>
+                    <NavLink to="/product"  style={toggleStyles}> Products</NavLink>
+                    <NavLink to="/menu"   style={toggleStyles}> Menus</NavLink>
+                    <NavLink to="/family"   style={toggleStyles}> Family mEAT</NavLink>
+                    <NavLink to="/about"   style={toggleStyles}> About mEAT</NavLink>
                     <NavLink to="/signup" style={toggleStyles}> Signup </NavLink>
                     <NavLink to="/login" style={toggleStyles}> Login </NavLink>
-
+                    
+                    
                 </nav>
 
             )}
+                </section>
+            </section>
+        </header>
 
+            
         </div>
 
 

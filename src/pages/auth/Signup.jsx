@@ -47,6 +47,8 @@ function Signup() {
 
             await signupService(user)
             console.log("todo bien")
+            navigate("/login")
+            console.log(user)
 
 
         } catch (error) {
@@ -64,25 +66,32 @@ function Signup() {
 
             <h1>Sign Up</h1>
 
+            
+
+            <section class="form">
+
             <form onSubmit={handleSignup}>
 
-                <label>Name:</label>
+                <label>Name</label>
+                <br />
                 <input
                     type="text"
                     name="username"
                     value={username}
                     onChange={handleUsernameChange}
                 />
-
-                <label>Surname:</label>
+                    <br />
+                <label>Surname</label>
+                <br />
                 <input
                     type="text"
                     name="surname"
                     value={surname}
                     onChange={handleSurnameChange}
                 />
-
-                <label>Street:</label>
+                <br />
+                <label>Street</label>
+                <br />
                 <input
                     type="text"
                     name="street"
@@ -90,60 +99,76 @@ function Signup() {
                     onChange={handleStreetChange}
                 />
 
-                <label>Number:</label>
+                <br />
+
+                <label>Number</label>
+                <br />
                 <input
                     type="number"
                     name="number"
                     value={number}
                     onChange={handleNumber}
                 />
+                <br />
 
-                <label>Portal:</label>
+                <label>Portal</label>
+                <br />
                 <input
                     type="text"
                     name="portal"
                     value={portal}
                     onChange={handlePortal}
                 />
+                <br />
 
-                <label>City:</label>
+                <label>City</label>
+                <br />
                 <input
                     type="text"
                     name="city"
                     value={city}
                     onChange={handleCity}
                 />
-
-                <label>Phone:</label>
+                    <br />
+                <label>Phone</label>
+                <br />
                 <input
                     type="number"
                     name="phone"
                     value={phone}
                     onChange={handlePhone}
                 />
+                <br />
 
-                <label>Email:</label>
+                <label>Email</label>
+                <br />
                 <input
                     type="email"
                     name="email"
                     value={email}
                     onChange={handleEmailChange}
                 />
-
-                <label>Password:</label>
+                    <br />
+                <label>Password</label>
+                <br />
                 <input
                     type="password"
                     name="password"
                     value={password}
                     onChange={handlePasswordChange}
                 />
+               
+                
 
                 {errorMessage !== null && <p>{errorMessage}</p>}
-
-                <button type="submit">Signup</button>
-
+                <br />
+               
+                <button class="home-main-button-signup" type="submit" >Signup</button>
+                
             </form>
-        </div>
+            </section>
+            </div>
+        
     )
 }
 
