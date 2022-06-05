@@ -7,6 +7,8 @@ import { Routes, Route } from "react-router";
 import Home from './pages/Home';
 import ProductList from './pages/product/ProductList';
 import Error from './pages/Error';
+import Family from './pages/Family';
+import About from './pages/About';
 
 
 
@@ -22,6 +24,7 @@ import MenuEdit from './pages/menu/MenuEdit';
 import OrderList from './pages/order/OrderList';
 import OrderDetails from './pages/order/OrderDetails';
 import OrderEdit from './pages/order/OrderEdit';
+
 
 
 
@@ -44,6 +47,10 @@ function App() {
       <Route path="/order" element={<OrderList />} />
       <Route path="/order/:id/details" element={<OrderDetails />} />
       <Route path="/order/:id/edit" element={<OrderEdit />} />
+
+      <Route path="/family" element={<Family />} />
+      <Route path="/about" element={<About />} />
+      
 
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />

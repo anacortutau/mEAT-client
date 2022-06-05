@@ -14,6 +14,12 @@ function ProductList() {
 
     const navigate= useNavigate()
 
+    const handleSubmit = async (e) =>{
+        e.preventDefault()
+
+        navigate("/")
+    }
+
 
     //2. componente DidMount
 
@@ -85,8 +91,9 @@ function ProductList() {
         </ul>
             <AddFormProduct getAllProducts= {getAllProducts}/>
            
+           <form onSubmit={handleSubmit}>
            <button class="home-main-button" onClick="submit">Home</button>
-            
+           </form>
            
            </main>     
     </div>

@@ -7,8 +7,25 @@ function OrderList() {
       //1. Estado para la data
       const [allOrder, setAllOrder] = useState(null)
       const [buscando, setBuscando] =useState(true)
+
+      const [name, setName] =useState(null)
+      const[number, setNumber] = useState(0)
+
+      const handleNameChange = (e)=>setName(e.target.value)
+      const handleNumberChange = (e)=>setNumber(e.target.value)
   
       const navigate= useNavigate()
+
+   
+      const handleSubmitDelete= async(e)=>{
+          e.preventDefault()
+          navigate("/")
+      }
+
+      const handleSubmitTake = async(e) =>{
+          e.preventDefault()
+          navigate("/take")
+      }
 
       useEffect(()=>{
 
@@ -55,7 +72,7 @@ function OrderList() {
     {/* <AddFormProduct getAllProducts= {getAllProducts}/>
     <hr/> */}
 
-    <h3>List Order</h3>
+    <h3>Take Home</h3>
 
     {allOrder === null && <h3>...Loading</h3>}
     {
@@ -63,11 +80,42 @@ function OrderList() {
             return(
                 <div key={eachOrder._id}>
                 <Link to={`/order/${eachOrder._id}/details`}>
-                    {eachOrder.name}{eachOrder.products}{eachOrder.menu}{eachOrder.price}</Link> 
+                    {eachOrder.name}{eachOrder.menu}{eachOrder.price}</Link> 
                 </div>
             )
         })
     }
+
+    <form onSubmit={handleSubmitDelete}>
+        <button type="sumbit">Delete</button>
+    </form>
+    <form onSubmit={handleSubmitTake}>
+        <button type="sumbit">Teak Home</button>
+    </form>
+
+    <form onSubmit={handleSubmitDelete}>
+        <label htmlFor="name">Card holder</label>
+        <input 
+        type="text"
+        name="name"
+        onChange={handleNameChange}
+        value={name}
+        />
+
+        <label htmlFor="number">Count Number</label>
+        <input 
+        type="number"
+        name="number"
+        onchange={handleNumberChange}
+        value={number}/> 
+
+
+         <button type="submit">Pay</button> 
+    </form>
+   
+    
+
+    
 </div>
   )
 }

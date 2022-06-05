@@ -12,6 +12,11 @@ function MenuList() {
      const [buscando, setBuscando] =useState(true)
  
      const navigate= useNavigate()
+
+     const handleSubmit = async(e)=>{
+         e.preventDefault()
+         navigate("/")
+     }
  
      useEffect(()=>{
 
@@ -74,8 +79,9 @@ function MenuList() {
 
 
             <AddFormMenu getAllMenus= {getAllMenus}/>
+            <form onSubmit={handleSubmit}>
                 <button type="submit">Home</button>
-
+            </form>
     </div>
   )
 }
