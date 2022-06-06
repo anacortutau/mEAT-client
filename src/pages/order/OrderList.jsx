@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import OrderPriceTotal from '../../components/OrderPriceTotal'
 import { getAllOrderService } from '../../services/order.services'
+
 
 //SACAR EL PEDIDO FILTRANDO POR EL NOMBRE DEL MENU Y EL NOMBRE DEL PRODUCTO
 //FALTA QUE FILTRE TAMBIEN POR EL NOMBRE, APELLIDOS, DIRRECION DEL USUARIO
@@ -8,6 +10,7 @@ import { getAllOrderService } from '../../services/order.services'
 function OrderList() {
 
       //1. Estado para la data
+      
       const [allOrder, setAllOrder] = useState(null)
       const [buscando, setBuscando] =useState(true)
 
@@ -28,6 +31,7 @@ function OrderList() {
           e.preventDefault()
           navigate("/")
       }
+ 
 
 
       useEffect(()=>{
@@ -83,10 +87,12 @@ function OrderList() {
         allOrder!== null && allOrder.map((eachOrder)=>{
             return(
                 <div key={eachOrder._id}> 
+                
+
                 {
                     eachOrder.menu.map((eachMenu)=>{
                         return (
-
+                
                             <li key={eachMenu._id}>{eachMenu.name}</li>
 
                         )
@@ -105,10 +111,19 @@ function OrderList() {
                 <Link to={`/order/${eachOrder._id}/details`}>Total</Link> 
                     {eachOrder.price}
                 </div>
+
+
+
             )
-        
+            
+
         })
+
     }
+       
+        
+          
+     
 
   
     {/* <form onSubmit={handleSubmitDelete}>
@@ -141,8 +156,8 @@ function OrderList() {
 
  
    
-    
 
+       
     
 </div>
   )

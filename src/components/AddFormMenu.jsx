@@ -6,7 +6,7 @@ import { addNewMenuService } from '../services/menu.services'
 function AddFormMenu(props) {
 
     const [name, setName] = useState("")
-    const [products, setProducts] = useState("")
+    const [products, setProducts] = useState([])
     const [price, setPrice] = useState(0)
    
 
@@ -38,6 +38,8 @@ function AddFormMenu(props) {
 
   return (
     <div>
+
+     
        <section class="title-create-menu">
 
         <h3 class="create-menu">Create New Menu</h3>
@@ -55,15 +57,19 @@ function AddFormMenu(props) {
         />
         
         <section class="form-menu">
+
+       
        
         <label htmlFor="products">Products</label>
-        <input
-          type="text"
-          name="products"
-          onChange={handleProducts}
-          value={products}
-        
-        />
+        <select name="products" multiple="true">
+        {products.map((eachProduct)=>{
+          return(
+            <option value={eachProduct._id}>{eachProduct.name}</option> 
+          )
+          
+        })}
+
+        </select>
           </section>
          
         <label htmlFor="price">Price</label>

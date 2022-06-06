@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context.js";
 
 function Navbar() {
 
-    const { isLoggedIn, user, authenticateUser } = useContext(AuthContext)
+    const { isLoggedIn, user, authenticateUser, setLoggedIn } = useContext(AuthContext)
     const toggleStyles = (navInfo) => {
         return navInfo.isActive === true ? activeStyles : inActiveStyles;
     };
@@ -40,7 +40,7 @@ function Navbar() {
                     <NavLink to="/menu" end={true} style={toggleStyles}>Menus</NavLink>
                     <NavLink to="/order"  style={toggleStyles}> Basket</NavLink>
                     <NavLink to="/opinion"  style={toggleStyles}> Your opinion is important</NavLink>
-                    <button onClick={handleLogout}>Cerrar sesión</button>
+                     <Link to="/"><button onClick={handleLogout}>Cerrar sesión</button></Link>
                     
                 </nav>
                 ) : (
