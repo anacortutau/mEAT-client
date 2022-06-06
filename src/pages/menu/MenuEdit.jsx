@@ -75,9 +75,9 @@ function MenuEdit() {
         />
 
         <label htmlFor="products">Products</label>
-        <select name="products" value={products.name} onChange={handleProductsChange}>
+        <select name="products" value={products} onChange={handleProductsChange}>
             
-        </select>
+       </select>
 
 
         <label htmlFor="price">Price</label>

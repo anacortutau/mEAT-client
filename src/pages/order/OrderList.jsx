@@ -11,16 +11,20 @@ function OrderList() {
       const [allOrder, setAllOrder] = useState(null)
       const [buscando, setBuscando] =useState(true)
 
-      const [name, setName] =useState(null)
-      const[number, setNumber] = useState(0)
+    //   const [name, setName] =useState(null)
+    //   const[number, setNumber] = useState(0)
 
-      const handleNameChange = (e)=>setName(e.target.value)
-      const handleNumberChange = (e)=>setNumber(e.target.value)
+    //   const handleNameChange = (e)=>setName(e.target.value)
+    //   const handleNumberChange = (e)=>setNumber(e.target.value)
   
       const navigate= useNavigate()
 
    
       const handleSubmitDelete= async(e)=>{
+          e.preventDefault()
+          navigate("/")
+      }
+      const handleSubmit = async(e)=>{
           e.preventDefault()
           navigate("/")
       }
@@ -45,11 +49,17 @@ function OrderList() {
 
 
         }catch(error){
-            if(error.response.status === 401){
-                navigate("/login")
-            }
 
             navigate("/error")
+            // if(error.response.status === 401){
+            //     navigate("/login")
+            // }else{
+
+            //     navigate("/error")
+
+            // }
+
+           
         }
 
 
@@ -61,16 +71,9 @@ function OrderList() {
         return <h3>...Loading</h3>
     }
 
-  
-
-
-
-
   return (
     <div>
-    {/* <AddFormProduct getAllProducts= {getAllProducts}/>
-    <hr/> */}
-    <main class="home-main">
+    {/* <main class="home-main"> */}
 
    
     <h3 class="home-main-tex">Take Home</h3>
@@ -79,20 +82,40 @@ function OrderList() {
     {
         allOrder!== null && allOrder.map((eachOrder)=>{
             return(
-                <div key={eachOrder._id}>
-                <Link to={`/order/${eachOrder._id}/details`}>
-                    {eachOrder.name}{eachOrder.menu}{eachOrder.price}</Link> 
+                <div key={eachOrder._id}> 
+                {
+                    eachOrder.menu.map((eachMenu)=>{
+                        return (
+
+                            <li key={eachMenu._id}>{eachMenu.name}</li>
+
+                        )
+                    })
+
+                }
+
+                {
+                    eachOrder.products.map((eachProduct)=>{
+                        return(
+                            <li key={eachProduct._id}>{eachProduct.name}</li>
+                        )
+                    })
+                }
+                 
+                <Link to={`/order/${eachOrder._id}/details`}>Total</Link> 
+                    {eachOrder.price}
                 </div>
             )
+        
         })
     }
 
-    <form onSubmit={handleSubmitDelete}>
+  
+    {/* <form onSubmit={handleSubmitDelete}>
         <button type="sumbit">Delete</button>
     </form>
    
-   
-    <form onSubmit={handleSubmitDelete}>
+    <form onSubmit={handleSubmit}>
     <section class="form-pay">
         <label htmlFor="name">Card holder</label>
         <input 
@@ -113,8 +136,10 @@ function OrderList() {
          </section>
          <button class="home-main-button" type="submit">Pay</button> 
     </form>
-   
-    </main>
+
+    </main> */}
+
+ 
    
     
 

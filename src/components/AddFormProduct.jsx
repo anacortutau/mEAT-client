@@ -80,7 +80,7 @@ function AddFormProduct(props) {
          </section>
         <br />
         <br />
-            <button class="home-main-button" type="submit">Add</button>
+            <button className="home-main-button" type="submit">Add</button>
             
     </form> 
     </section>

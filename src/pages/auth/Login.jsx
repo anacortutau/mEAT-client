@@ -12,13 +12,13 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isAdmin, setIsAdmin] = useState(false)
+    //const [isAdmin, setIsAdmin] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
   
 
      const handleEmailChange = (e) => setEmail(e.target.value);
      const handlePasswordChange = (e) => setPassword(e.target.value);
-     const handleIsAdmin = (e)=>setIsAdmin(e.target.value);
+    //const handleIsAdmin = (e)=>setIsAdmin(e.target.checked);
 
    
       
@@ -43,10 +43,7 @@ function Login() {
           localStorage.setItem("authToken", response.data.authToken)
           authenticateUser()
           navigate("/")
-    
-          // asignar los valores a los estados globales para manejo en el Front en context
-    
-    
+
         }catch(error){
           console.log(error.response)
     
@@ -80,11 +77,7 @@ function Login() {
           value={password}
           onChange={handlePasswordChange}
         />
-        {/* <div className="isAdminCkeckBox">
-          <label htmlFor="isAdmin">Admin</label>
-          <input type="checkbox"  name="isAdmin" checked={isAdmin} onChange={handleIsAdmin}/>
-          </div> */}
-
+        
         {errorMessage !== null && <p>{errorMessage}</p>}
 
         <button class="home-main-button-login" type="submit">Login</button>

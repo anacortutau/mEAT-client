@@ -10,7 +10,6 @@ function MenuList() {
 
      //1. Estado para la data
      const [allMenu, setAllMenu] = useState(null)
-     const [allProducts, setAllProducts] = useState(null)
      const [buscando, setBuscando] =useState(true)
  
      const navigate= useNavigate()
@@ -39,11 +38,13 @@ function MenuList() {
 
 
         }catch(error){
-            if(error.response.status === 401){
-                navigate("/login")
-            }
-
             navigate("/error")
+        
+            // if(error.response.status === 401){
+            //     navigate("/login")
+            // }
+
+            // navigate("/error")
         }
 
 
@@ -71,7 +72,8 @@ function MenuList() {
                     return(
                         <div key={eachMenu._id}>
                         <Link to={`/menu/${eachMenu._id}/details`}>
-                            {eachMenu.name}{eachMenu.products}{eachMenu.price}</Link> 
+                           <h3>{eachMenu.name}{eachMenu.price}</h3></Link>
+                        
                         </div>
                     )
                     
@@ -79,7 +81,7 @@ function MenuList() {
                 
             }
 
-            <AddFormMenu getAllMenus= {getAllMenus}/>
+            <AddFormMenu/>
             <form onSubmit={handleSubmit}>
                 <button class="home-main-button" type="submit">Home</button>
             </form>

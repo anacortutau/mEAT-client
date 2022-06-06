@@ -75,7 +75,7 @@ function AddFormMenu(props) {
         />
         </section>
         <br />
-            <button  class="home-main-button" type="submit">Add</button>
+            <button  className="home-main-button">Add</button>
             
     </form> 
     

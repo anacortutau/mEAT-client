@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteMenuService, getMenuDetailsService } from '../../services/menu.services'
+import ProductList from '../product/ProductList'
 
 function MenuDetails() {
 
@@ -9,6 +10,14 @@ function MenuDetails() {
       const [menuDetails, setMenuDetails] = useState(null)
       const {id}= useParams()
       const navigate = useNavigate()
+
+
+
+
+      const handleList = async(e) =>{
+          e.preventDefault()
+          navigate("/menu")
+      }
 
       //2. componentDidMount
 
@@ -23,6 +32,8 @@ function MenuDetails() {
         try{
             const response = await getMenuDetailsService(id)
             setMenuDetails(response.data)
+            
+            
         }catch(error){
             navigate("/error")
         }
@@ -49,13 +60,22 @@ function MenuDetails() {
     <div>
 
         <h3>Menu Details</h3>
-        <h4> Name: {menuDetails.name}</h4>
-        <h4>Products:{menuDetails.products.name}</h4>
-        <h3>Price: {menuDetails.price}</h3>
+        <h4> Name:{menuDetails.name}</h4>
+       
+        {
+            menuDetails.products.map((eachProduct)=>{
+                return(
+                    <li>{eachProduct.name}</li>
+                )
+            })
+        }
+        <h3>Total price:{menuDetails.price}</h3>
 
         <button onClick={handleDelete}>Delete</button>
 
         <Link to={`/menu/${id}/edit`}><button>Edit</button></Link>
+
+        <button onClick={handleList}>Menu list</button>
     </div>
   )
 }

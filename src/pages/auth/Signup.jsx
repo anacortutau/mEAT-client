@@ -30,7 +30,7 @@ function Signup() {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-            //create user
+        //create user
         const user = {
             username,
             surname,
@@ -63,112 +63,99 @@ function Signup() {
     };
     return (
         <div>
-
             <h1>Sign Up</h1>
-
-            
-
             <section class="form">
 
-            <form onSubmit={handleSignup}>
+                <form onSubmit={handleSignup}>
 
-                <label>Name</label>
-                <br />
-                <input
-                    type="text"
-                    name="username"
-                    value={username}
-                    onChange={handleUsernameChange}
-                />
+                    <label>Name</label>
                     <br />
-                <label>Surname</label>
-                <br />
-                <input
-                    type="text"
-                    name="surname"
-                    value={surname}
-                    onChange={handleSurnameChange}
-                />
-                <br />
-                <label>Street</label>
-                <br />
-                <input
-                    type="text"
-                    name="street"
-                    value={street}
-                    onChange={handleStreetChange}
-                />
-
-                <br />
-
-                <label>Number</label>
-                <br />
-                <input
-                    type="number"
-                    name="number"
-                    value={number}
-                    onChange={handleNumber}
-                />
-                <br />
-
-                <label>Portal</label>
-                <br />
-                <input
-                    type="text"
-                    name="portal"
-                    value={portal}
-                    onChange={handlePortal}
-                />
-                <br />
-
-                <label>City</label>
-                <br />
-                <input
-                    type="text"
-                    name="city"
-                    value={city}
-                    onChange={handleCity}
-                />
+                    <input
+                        type="text"
+                        name="username"
+                        value={username}
+                        onChange={handleUsernameChange}
+                    />
                     <br />
-                <label>Phone</label>
-                <br />
-                <input
-                    type="number"
-                    name="phone"
-                    value={phone}
-                    onChange={handlePhone}
-                />
-                <br />
-
-                <label>Email</label>
-                <br />
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={handleEmailChange}
-                />
+                    <label>Surname</label>
                     <br />
-                <label>Password</label>
-                <br />
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                />
-               
-                
+                    <input
+                        type="text"
+                        name="surname"
+                        value={surname}
+                        onChange={handleSurnameChange}
+                    />
+                    <br />
+                    <label>Street</label>
+                    <br />
+                    <input
+                        type="text"
+                        name="street"
+                        value={street}
+                        onChange={handleStreetChange}
+                    />
+                    <br />
+                    <label>Number</label>
+                    <br />
+                    <input
+                        type="number"
+                        name="number"
+                        value={number}
+                        onChange={handleNumber}
+                    />
+                    <br />
+                    <label>Portal</label>
+                    <br />
+                    <input
+                        type="text"
+                        name="portal"
+                        value={portal}
+                        onChange={handlePortal}
+                    />
+                    <br />
+                    <label>City</label>
+                    <br />
+                    <input
+                        type="text"
+                        name="city"
+                        value={city}
+                        onChange={handleCity}
+                    />
+                    <br />
+                    <label>Phone</label>
+                    <br />
+                    <input
+                        type="number"
+                        name="phone"
+                        value={phone}
+                        onChange={handlePhone}
+                    />
+                    <br />
+                    <label>Email</label>
+                    <br />
+                    <input
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={handleEmailChange}
+                    />
+                    <br />
+                    <label>Password</label>
+                    <br />
+                    <input
+                        type="password"
+                        name="password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                    />
+                    {errorMessage !== null && <p>{errorMessage}</p>}
+                    <br />
+                    <button class="home-main-button-signup" type="submit" >Signup</button>
 
-                {errorMessage !== null && <p>{errorMessage}</p>}
-                <br />
-               
-                <button class="home-main-button-signup" type="submit" >Signup</button>
-                
-            </form>
+                </form>
             </section>
-            </div>
-        
+        </div>
+
     )
 }
 

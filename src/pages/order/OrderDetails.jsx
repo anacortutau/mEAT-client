@@ -10,6 +10,11 @@ function OrderDetails() {
      const {id}= useParams()
      const navigate = useNavigate()
 
+     const handleList = async(e)=>{
+         e.preventDefault()
+         navigate("/order")
+     }
+
       //2. componentDidMount
 
     useEffect(()=>{
@@ -44,9 +49,6 @@ function OrderDetails() {
         return <h3>...Loading</h3>
     }
 
-
-
-
   return (
     <div>
 
@@ -58,6 +60,8 @@ function OrderDetails() {
         <button onClick={handleDelete}>Delete</button>
 
         <Link to={`/order/${id}/edit`}><button>Edit</button></Link>
+
+        <button onClick={handleList}>Order list</button>
     </div>
   )
 }
