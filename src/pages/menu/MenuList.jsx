@@ -81,7 +81,7 @@ function MenuList() {
                 
             }
 
-            <AddFormMenu/>
+            <AddFormMenu getAllMenus= {getAllMenus}/>
             <form onSubmit={handleSubmit}>
                 <button class="home-main-button" type="submit">Home</button>
             </form>

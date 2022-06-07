@@ -27,6 +27,7 @@ function OrderDetails() {
      const getOrderDetails = async() =>{
         try{
             const response = await getOrderDetailsService(id)
+            console.log(response.data)
             setOrderDetails(response.data)
         }catch(error){
             navigate("/error")
@@ -52,9 +53,35 @@ function OrderDetails() {
   return (
     <div>
 
+        {/* {
+            orderDetails!==null && orderDetails.map((each)=>{
+                return(
+                    <div key={each._id}>
+                        {
+                            each.products.map((eachProduct)=>{
+                                return(
+                                    <li key={eachProduct._id}>{eachProduct.name}</li>
+                                )
+                            })
+                        }
+
+                        {
+                            each.menu.map((eachMenu)=>{
+                                return(
+                                    <li key={eachMenu._id}>{eachMenu.name}</li>
+                                )
+                            })
+                        }
+
+                
+                    </div>
+                )
+            })
+        } */}
+       
         <h3>Order Details</h3>
-        <h4>Products: {orderDetails.products}</h4>
-        <h4>Menu: {orderDetails.menu}</h4>
+        <h4>Products: {orderDetails.products.name}</h4>
+        <h4>Menu: {orderDetails.menu.name}</h4>
         <h3>Price: {orderDetails.price}</h3>
 
         <button onClick={handleDelete}>Delete</button>

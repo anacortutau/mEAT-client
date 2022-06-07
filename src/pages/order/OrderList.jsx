@@ -107,9 +107,12 @@ function OrderList() {
                         )
                     })
                 }
+                <p>Price Total:  {eachOrder.price}€</p>
+                <br />
+                <br />
                  
-                <Link to={`/order/${eachOrder._id}/details`}>Total</Link> 
-                    {eachOrder.price}
+                {/* <Link to={`/order/${eachOrder._id}/details`}>Details Menu</Link>  */}
+                    
                 </div>
 
 

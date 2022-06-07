@@ -9,6 +9,7 @@ function About() {
         e.preventDefault()
         navigate("/")
     }
+
   return (
     <div>
         <h2>

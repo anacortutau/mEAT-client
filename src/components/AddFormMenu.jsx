@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { addNewMenuService } from '../services/menu.services'
+import { getAllProductService } from '../services/product.services'
 
 
 function AddFormMenu(props) {
@@ -14,30 +15,59 @@ function AddFormMenu(props) {
 
 
     const handleNameChange = (e) => setName(e.target.value);
-    const handleProducts =(e) => setProducts(e.target.value);
+    const handleProducts =(selectOption)=>{
+      setProducts({selectOption})
+      console.log(selectOption)
+    } 
     const handlePriceChange = (e) => setPrice(e.target.value);
+
+
+
+    useEffect(()=>{
+      allProducts()
+     
+
+    },[])
+
+    const allProducts = async(e)=>{
+
+      try{
+        const response = await getAllProductService()
+        setProducts(response.data)
+      }catch(error){
+        navigate("/error")
+      }
+    }
 
     const handleSubmit = async(e) =>{
         e.preventDefault()
+        
 
         try{
+
             const newMenu = {
-                name,
-                products,
-                price
+              name,
+              products,
+              price    
             }
 
             await addNewMenuService(newMenu)
             props.getAllMenu()
             navigate("/menu")
+           
         }catch(error){
             navigate("/error")
         }
     }
 
+   
+
+  
+
 
   return (
     <div>
+
 
      
        <section class="title-create-menu">
@@ -58,15 +88,18 @@ function AddFormMenu(props) {
         
         <section class="form-menu">
 
-       
+
+        
+      
        
         <label htmlFor="products">Products</label>
-        <select name="products" multiple="true">
+         <select value={products} name="products" onChange={handleProducts}>
+          
         {products.map((eachProduct)=>{
           return(
-            <option value={eachProduct._id}>{eachProduct.name}</option> 
-          )
-          
+            <option key={eachProduct._id} value={eachProduct._id}>{eachProduct.name}</option> 
+           
+          ) 
         })}
 
         </select>
@@ -81,8 +114,7 @@ function AddFormMenu(props) {
         />
         </section>
         <br />
-            <button  className="home-main-button">Add</button>
-            
+            <button  className="home-main-button">Add</button>    
     </form> 
     
     </section>

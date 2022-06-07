@@ -5,7 +5,7 @@ import { getMenuDetailsService, patchMenuService } from '../../services/menu.ser
 function MenuEdit() {
 
     const [name, setName] = useState("");
-    const [products, setProducts] = useState("");
+    const [products, setProducts] = useState([]);
     const [price, setPrice]= useState(0)
     const navigate= useNavigate()
     const {id} = useParams()
