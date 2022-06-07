@@ -71,8 +71,11 @@ function MenuList() {
             allMenu!== null && allMenu.map((eachMenu)=>{
                     return(
                         <div key={eachMenu._id}>
+                        <section class="menus">
                         <Link to={`/menu/${eachMenu._id}/details`}>
-                           <h3>{eachMenu.name}{eachMenu.price}</h3></Link>
+                           <button className="home-main-button-menus">{eachMenu.name}</button></Link>
+                           <h4>Price:{eachMenu.price}</h4>
+                           </section>
                         
                         </div>
                     )

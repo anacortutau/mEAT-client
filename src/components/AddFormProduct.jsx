@@ -10,6 +10,8 @@ function AddFormProduct(props) {
 
     const navigate= useNavigate()
 
+  
+
 
     const handleCategoryChange = (e) => setCategory(e.target.value);
     const handleNameChange =(e) => setName(e.target.value);

@@ -1,13 +1,11 @@
 import React from 'react'
 
-function BasketForm() {
-  
-  return (
-    <div>BasketForm</div>
+function BasketForm(props) {
+
+    
+      return (
+    <div>Products Total</div>
   )
 }
 
 export default BasketForm
-
-
-

@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import AddFormProduct from '../../components/AddFormProduct'
+import BasketForm from '../../components/BasketForm'
+
+
 import { getAllProductService } from '../../services/product.services'
 
 
-
-
-function ProductList() {
+function ProductList(props) {
 
     //1. Estado para la data
     const [allProducts, setAllProducts] = useState(null)
     const [buscando, setBuscando] =useState(true)
+  
+
+    
 
     const navigate= useNavigate()
+
+    const handleClick = async(e)=>{
+        e.preventDefault()
+        console.log("añade cesta")
+    }
+
+    const handleBasket = async(e)=>{
+        e.preventDefault()
+        navigate("/order")
+    }
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
@@ -75,13 +89,35 @@ function ProductList() {
                 return(
                     
                     <div key={eachProduct._id}>
-                       
+                    
+                    <section class="products">
                     <Link to={`/product/${eachProduct._id}/details`}>
-                        {eachProduct.category}
-                        {eachProduct.name}
-                        {eachProduct.price}</Link> 
+                        <br />
+                        <br/>
+                    <button className="home-main-button-products">{eachProduct.name}</button></Link> 
+                    <h4>{eachProduct.category}</h4>
                         
+                    <h4>Price: {eachProduct.price}€</h4>
+                    <br />
+
+                    <form onSubmit={handleBasket}>
+                    <button class="home-main-button-basket" onClick={handleClick}>Add basket</button>
+                    </form>
+                    
+                        </section>
+                        
+
+             
+                       
+
+
+
+                        <BasketForm/>
+                   
+
                     </div>
+                    
+                    
                     
                     
                    
@@ -90,12 +126,16 @@ function ProductList() {
         }
         </ul>
             <AddFormProduct getAllProducts= {getAllProducts}/>
+
+            <form onSubmit={handleSubmit}>
+            <button class="home-main-button" onClick="submit">Home</button>
+
+            </form>
            
-           <form onSubmit={handleSubmit}>
-           <button class="home-main-button" onClick="submit">Home</button>
-           </form>
            
-           </main>     
+           </main> 
+
+           
     </div>
   )
 }
