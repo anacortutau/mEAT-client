@@ -7,6 +7,10 @@ const getAllOrderService = () =>{
     return service.get("/order")
 }
 
+const addNewOrderService = (newOrder) =>{
+    return service.post("/order", newOrder)
+}
+
 const getOrderDetailsService = (id) =>{
     return service.get(`/order/${id}`)
 }
@@ -22,4 +26,4 @@ const patchOrderService = (id, editOrder) =>{
 }
 
 
-export{getAllOrderService, getOrderDetailsService, deleteOrderService, patchOrderService}
+export{getAllOrderService, getOrderDetailsService, deleteOrderService, patchOrderService, addNewOrderService}

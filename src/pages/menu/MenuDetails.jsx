@@ -9,11 +9,16 @@ function MenuDetails() {
 
       const [menuDetails, setMenuDetails] = useState(null)
       const {id}= useParams()
+      const[allMenuOrder, setAllMenuOrder] = useState([])
       const navigate = useNavigate()
 
       
 
+      const handlePreAdd= async (e)=>{
+          e.preventDefault()
 
+          setAllMenuOrder([...allMenuOrder, id])
+      }
 
 
       const handleList = async(e) =>{
@@ -67,16 +72,13 @@ function MenuDetails() {
         {
             menuDetails.products.map((eachProduct)=>{
                 return(
-                    <li>{eachProduct.name}</li>
+                    <li key={eachProduct._id}>{eachProduct.name}</li>
                 )
             })
         }
         <h3>Total price:{menuDetails.price}</h3>
 
-            <form action="/order">
-                <input type="number" name="qty"  />
-                <button  >Agregar</button>
-                </form>
+        <form><button onClick={handlePreAdd} >Agregar</button></form>
 
         <button onClick={handleDelete}>Delete</button>
 

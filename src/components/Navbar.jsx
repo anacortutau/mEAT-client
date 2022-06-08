@@ -38,7 +38,7 @@ function Navbar() {
                     
                     <NavLink to="/product" end={true} style={toggleStyles}>Products</NavLink>
                     <NavLink to="/menu" end={true} style={toggleStyles}>Menus</NavLink>
-                    <NavLink to="/order"  style={toggleStyles}> Basket</NavLink>
+                    <NavLink to="/order"  style={toggleStyles}> Basket List</NavLink>
                      <Link to="/"><button onClick={handleLogout}>Cerrar sesión</button></Link>
                     
                 </nav>

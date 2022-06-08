@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteProductService, getProductDetailsService } from '../../services/product.services'
+import {addNewOrderService} from '../../services/order.services'
+import PreOrder from '../order/PreOrder'
 
 function ProductDetails() {
 
     //1. creamos un estado
 
     const [productDetails, setProductDetails] = useState(null)
+    const [allProductsOrder, setProductsOrder] = useState([])
     const {id}= useParams()
     const navigate = useNavigate()
+
+    const handlePreAdd = async(e)=>{
+        e.preventDefault()
+
+        setProductsOrder([...allProductsOrder, {id: id, name:productDetails.name}])
+
+    }
+
+    
 
     const handleList = async(e)=>{
         e.preventDefault()
@@ -50,6 +62,7 @@ function ProductDetails() {
     }
 
   return (
+      <>
     <div>
 
         <h3>Product Details</h3>
@@ -57,10 +70,7 @@ function ProductDetails() {
         <h4>Name: {productDetails.name}</h4>
         <h3>Price: {productDetails.price}</h3>
 
-                <form action="/order">
-                <input type="number" name="qty"  />
-                <button >Agregar</button>
-                </form>
+                <form><button onClick={handlePreAdd} >Agregar</button></form>
 
         <button onClick={handleDelete}>Delete</button>
 
@@ -68,6 +78,11 @@ function ProductDetails() {
 
         <button onClick={handleList}>Product list</button>
     </div>
+
+    <div>
+        <PreOrder preProducts={allProductsOrder} />
+    </div>
+    </>
   )
 }
 

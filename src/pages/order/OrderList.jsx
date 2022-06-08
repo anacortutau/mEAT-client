@@ -6,12 +6,13 @@ import { getAllOrderService } from '../../services/order.services'
 //SACAR EL PEDIDO FILTRANDO POR EL NOMBRE DEL MENU Y EL NOMBRE DEL PRODUCTO
 //FALTA QUE FILTRE TAMBIEN POR EL NOMBRE, APELLIDOS, DIRRECION DEL USUARIO
 
-function OrderList() {
+function OrderList(props) {
 
       //1. Estado para la data
       
       const [allOrder, setAllOrder] = useState(null)
       const [buscando, setBuscando] =useState(true)
+      const {preProducts, preMenus} = props 
 
     //   const [name, setName] =useState(null)
     //   const[number, setNumber] = useState(0)
@@ -76,7 +77,7 @@ function OrderList() {
 
   return (
     <div>
-    {/* <main class="home-main"> */}
+    <main class="home-main">
 
    
     <h3 class="home-main-tex">Take Home</h3>
@@ -123,16 +124,12 @@ function OrderList() {
 
     }
        
-        
-          
-     
-
   
-    {/* <form onSubmit={handleSubmitDelete}>
+      <form onSubmit={handleSubmitDelete}>
         <button type="sumbit">Delete</button>
     </form>
    
-    <form onSubmit={handleSubmit}>
+    {/* <form onSubmit={handleSubmit}>
     <section class="form-pay">
         <label htmlFor="name">Card holder</label>
         <input 
@@ -152,11 +149,11 @@ function OrderList() {
         /> 
          </section>
          <button class="home-main-button" type="submit">Pay</button> 
-    </form>
+    </form> */}
 
-    </main> */}
+    </main> 
 
- 
+  
    
 
        
