@@ -95,14 +95,10 @@ function ProductList(props) {
                         <br />
                         <br/>
                     <button className="home-main-button-products">{eachProduct.name}</button></Link> 
-                    <h4>{eachProduct.category}</h4>
-                        
-                    <h4>Price: {eachProduct.price}€</h4>
+                    
                     <br />
 
-                    <form onSubmit={handleBasket}>
-                    <button class="home-main-button-basket" onClick={handleClick}>Add basket</button>
-                    </form>
+                   
                     
                         </section>
                         
@@ -112,7 +108,7 @@ function ProductList(props) {
 
 
 
-                        <BasketForm/>
+                        
                    
 
                     </div>

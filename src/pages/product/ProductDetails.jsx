@@ -57,6 +57,11 @@ function ProductDetails() {
         <h4>Name: {productDetails.name}</h4>
         <h3>Price: {productDetails.price}</h3>
 
+        <form action="/order">
+                <input type="number" name="qty"  />
+                <button >Agregar</button>
+                </form>
+
         <button onClick={handleDelete}>Delete</button>
 
         <Link to={`/product/${id}/edit`}><button>Edit</button></Link>
@@ -65,5 +70,7 @@ function ProductDetails() {
     </div>
   )
 }
+
+
 
 export default ProductDetails

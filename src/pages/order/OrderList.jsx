@@ -106,7 +106,7 @@ function OrderList() {
                         )
                     })
                 }
-                <p>Price Total:  {eachOrder.price}€</p>
+                <p>Price Total:{eachOrder.price}€</p>
                 <br />
                 <br />
                  

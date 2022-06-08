@@ -71,6 +71,11 @@ function MenuDetails() {
         }
         <h3>Total price:{menuDetails.price}</h3>
 
+        <form action="/order">
+                <input type="number" name="qty"  />
+                <button >Agregar</button>
+                </form>
+
         <button onClick={handleDelete}>Delete</button>
 
         <Link to={`/menu/${id}/edit`}><button>Edit</button></Link>

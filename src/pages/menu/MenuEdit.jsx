@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { getMenuDetailsService, patchMenuService } from '../../services/menu.services';
+import { getAllProductService } from '../../services/product.services';
 
 function MenuEdit() {
 
@@ -35,7 +36,18 @@ function MenuEdit() {
     useEffect(()=>{
        
         getMenuDetails()
+        allProducts()
     }, [])
+
+    const allProducts = async (e) => {
+
+        try {
+          const response = await getAllProductService()
+          setProducts(response.data)
+        } catch (error) {
+          navigate("/error")
+        }
+      }
 
     const getMenuDetails = async() =>{
 
@@ -76,7 +88,13 @@ function MenuEdit() {
 
         <label htmlFor="products">Products</label>
         <select name="products" value={products} onChange={handleProductsChange}>
-            
+        {products.map((eachProduct) => {
+                  return (
+                    <option key={eachProduct._id} value={eachProduct._id}>{eachProduct.name}</option>
+
+                  )
+                })}
+
        </select>
 
 

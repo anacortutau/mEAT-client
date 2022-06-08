@@ -74,7 +74,6 @@ function MenuList() {
                         <section class="menus">
                         <Link to={`/menu/${eachMenu._id}/details`}>
                            <button className="home-main-button-menus">{eachMenu.name}</button></Link>
-                           <h4>Price:{eachMenu.price}</h4>
                            </section>
                         
                         </div>
