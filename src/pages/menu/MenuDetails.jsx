@@ -11,6 +11,8 @@ function MenuDetails() {
       const {id}= useParams()
       const navigate = useNavigate()
 
+      
+
 
 
 
@@ -71,9 +73,9 @@ function MenuDetails() {
         }
         <h3>Total price:{menuDetails.price}</h3>
 
-        <form action="/order">
+            <form action="/order">
                 <input type="number" name="qty"  />
-                <button >Agregar</button>
+                <button  >Agregar</button>
                 </form>
 
         <button onClick={handleDelete}>Delete</button>
