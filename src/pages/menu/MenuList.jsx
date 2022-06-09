@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import AddFormMenu from '../../components/AddFormMenu'
+import { AuthContext } from '../../context/auth.context'
 import { getAllMenuService } from '../../services/menu.services'
 
 //SACAR EL LISTADO DE MENUS CON EL NOMBRE DE LOS PRODUCTOS
@@ -11,6 +12,7 @@ function MenuList(props) {
      //1. Estado para la data
      const [allMenu, setAllMenu] = useState(null)
      const [buscando, setBuscando] =useState(true)
+     const {isAdmin} = useContext(AuthContext)
  
      const navigate= useNavigate()
 
@@ -83,7 +85,7 @@ function MenuList(props) {
                 
             }
 
-            <AddFormMenu getAllMenus= {getAllMenus}/>
+            {isAdmin ? <AddFormMenu getAllMenus= {getAllMenus} /> : ""}
             <form onSubmit={handleSubmit}>
                 <button class="home-main-button" type="submit">Home</button>
             </form>
