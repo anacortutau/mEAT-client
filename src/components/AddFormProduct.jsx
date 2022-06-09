@@ -79,10 +79,15 @@ function AddFormProduct(props) {
           onChange={handlePriceChange}
           checked={price}
         />
+        <label htmlFor='pictures'>Image</label>
+        <input type="file" name="image"/>
          </section>
         <br />
         <br />
             <button className="home-main-button" type="submit">Add</button>
+            
+
+        
             
     </form> 
     </section>

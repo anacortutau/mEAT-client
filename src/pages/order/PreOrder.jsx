@@ -13,7 +13,7 @@ function PreOrder(props) {
 
       {preMenus!== undefined &&
         preMenus.map((eachMenu) => {
-          return <div key={eachMenu._id}></div>;
+          return <div key={eachMenu._id}>{eachMenu.name}</div>;
         })}
 
 

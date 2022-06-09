@@ -6,7 +6,7 @@ import { getAllMenuService } from '../../services/menu.services'
 //SACAR EL LISTADO DE MENUS CON EL NOMBRE DE LOS PRODUCTOS
 
 
-function MenuList() {
+function MenuList(props) {
 
      //1. Estado para la data
      const [allMenu, setAllMenu] = useState(null)

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteMenuService, getMenuDetailsService } from '../../services/menu.services'
+import PreOrder from '../order/PreOrder'
 import ProductList from '../product/ProductList'
 
 function MenuDetails() {
@@ -17,7 +18,7 @@ function MenuDetails() {
       const handlePreAdd= async (e)=>{
           e.preventDefault()
 
-          setAllMenuOrder([...allMenuOrder, id])
+          setAllMenuOrder([...allMenuOrder, {id: id, name: menuDetails.name} ])
       }
 
 
@@ -64,10 +65,11 @@ function MenuDetails() {
 
 
   return (
+    <>
     <div>
 
         <h3>Menu Details</h3>
-        <h4> Name:{menuDetails.name}</h4>
+        <h4>{menuDetails.name}</h4>
        
         {
             menuDetails.products.map((eachProduct)=>{
@@ -76,16 +78,24 @@ function MenuDetails() {
                 )
             })
         }
-        <h3>Total price:{menuDetails.price}</h3>
+        <h4>Price:{menuDetails.price}€</h4>
 
-        <form><button onClick={handlePreAdd} >Agregar</button></form>
+        <form><button class="home-main-button-about-add" onClick={handlePreAdd} >Add</button></form>
 
-        <button onClick={handleDelete}>Delete</button>
+        <button class="home-main-button-about-delete" onClick={handleDelete}>Delete</button>
 
-        <Link to={`/menu/${id}/edit`}><button>Edit</button></Link>
+        <Link to={`/menu/${id}/edit`}><button class="home-main-button-about-edit">Edit</button></Link>
 
-        <button onClick={handleList}>Menu list</button>
+        <button class="home-main-button-about-list" onClick={handleList}>Menu list</button>
     </div>
+
+    <div>
+        <PreOrder preMenus={allMenuOrder} />
+      </div>
+
+
+    </>
+   
   )
 }
 

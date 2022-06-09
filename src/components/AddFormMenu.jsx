@@ -115,6 +115,8 @@ function AddFormMenu(props) {
               onChange={handlePriceChange}
               checked={price}
             />
+             <label htmlFor='pictures'>Image</label>
+            <input type="file" name="image"/>
           </section>
           <br />
           <button className="home-main-button">Add</button>
