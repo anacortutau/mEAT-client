@@ -78,7 +78,7 @@ function AddFormMenu(props) {
         <h3 class="create-menu">Create New Menu</h3>
 
         <form onSubmit={handleSubmit}>
-          <section class="form-menu">
+          
 
 
             <label htmlFor="name">Name</label>
@@ -116,9 +116,6 @@ function AddFormMenu(props) {
               onChange={handlePriceChange}
               checked={price}
             />
-             <label htmlFor='pictures'>Image</label>
-            <input type="file" name="image"/>
-          </section>
           <br />
           <button className="home-main-button">Add</button>
         </form>

@@ -27,7 +27,6 @@ function AuthWrapper (props) {
 
             if(response.data.adminRole === "admin"){
                 setIsAdmin(true)
-                console.log("entro en el if")
             }
             setUser(response.data)
            
@@ -35,6 +34,7 @@ function AuthWrapper (props) {
         }catch(error){
             setIsLoggedIn(false)
             setUser(null)
+            setIsAdmin(false)
             setIsLoading(false)
         }
     }

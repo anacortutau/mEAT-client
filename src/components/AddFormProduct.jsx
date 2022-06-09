@@ -51,7 +51,7 @@ function AddFormProduct(props) {
       <form onSubmit={handleSubmit}>
         
         <br />
-        <section class="form-products">
+        
         <label  htmlFor="category">Category</label>
         
         <select name="category" value={category} onChange={handleCategoryChange}>
@@ -79,9 +79,7 @@ function AddFormProduct(props) {
           onChange={handlePriceChange}
           checked={price}
         />
-        <label htmlFor='pictures'>Image</label>
-        <input type="file" name="image"/>
-         </section>
+        
         <br />
         <br />
             <button className="home-main-button" type="submit">Add</button>
