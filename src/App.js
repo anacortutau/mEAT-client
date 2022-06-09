@@ -36,22 +36,23 @@ function App() {
 
   const [allProductsOrder, setProductsOrder] = useState([]);
   const [allMenuOrder, setAllMenuOrder] = useState([]);
+  
   const addProductPre = (product) => {
     console.log(product);
     setProductsOrder([...allProductsOrder, product]);
   };
 
-  const removeProductPre = (id) => {
-    setProductsOrder(allProductsOrder.filter((product) => product.id !== id));
-  };
+  // const removeProductPre = (id) => {
+  //   setProductsOrder(allProductsOrder.filter((product) => product.id !== id));
+  // };
 
   const addMenuPre = (menu) => {
     setAllMenuOrder([...allMenuOrder, menu]);
   };
 
-  const removeMenuPre = (id) => {
-    setAllMenuOrder(allMenuOrder.filter((menu) => menu.id !== id));
-  };
+  // const removeMenuPre = (id) => {
+  //   setAllMenuOrder(allMenuOrder.filter((menu) => menu.id !== id));
+  // };
 
   return (
     <div className="App">

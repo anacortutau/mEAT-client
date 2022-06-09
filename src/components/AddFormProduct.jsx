@@ -1,96 +1,90 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { addNewProductService } from '../services/product.services'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { addNewProductService } from "../services/product.services";
 
 function AddFormProduct(props) {
+  //1. status for date
+  const [category, setCategory] = useState("");
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
 
-    const [category, setCategory] = useState("")
-    const [name, setName] = useState("")
-    const [price, setPrice] = useState(0)
+  const navigate = useNavigate();
 
-    const navigate= useNavigate()
+  const handleCategoryChange = (e) => setCategory(e.target.value);
+  const handleNameChange = (e) => setName(e.target.value);
+  const handlePriceChange = (e) => setPrice(e.target.value);
 
-  
+  //2. funcion create the data
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleCategoryChange = (e) => setCategory(e.target.value);
-    const handleNameChange =(e) => setName(e.target.value);
-    const handlePriceChange = (e) => setPrice(e.target.value);
+    try {
+      const newProduct = {
+        category,
+        name,
+        price,
+      };
 
-    const handleSubmit = async(e) =>{
-        e.preventDefault()
-
-        try{
-
-            const newProduct = {
-                category,
-                name,
-                price
-            }
-
-            await addNewProductService(newProduct)
-            props.getAllProducts()
-            navigate("/product")
-        }catch(error){
-            navigate("/error")
-        }
+      await addNewProductService(newProduct);
+      props.getAllProducts();
+      navigate("/product");
+    } catch (error) {
+      navigate("/error");
     }
-
+  };
 
   return (
     <div>
-
-       <section class="title-create-product">
-
-       
+      <section class="title-create-product">
         <h3 class="create-product">Create New Product</h3>
 
-      
-           
-  
-      <form onSubmit={handleSubmit}>
-        
-        <br />
-        
-        <label  htmlFor="category">Category</label>
-        
-        <select name="category" value={category} onChange={handleCategoryChange}>
+        {/* create products form */}
+
+        <form onSubmit={handleSubmit}>
+          <br />
+
+          <label htmlFor="category">Category</label>
+
+          <select
+            name="category"
+            value={category}
+            onChange={handleCategoryChange}
+          >
             <option value="Dish">Dish</option>
             <option value="Garrison">Garrison</option>
             <option value="Dessert">Dessert</option>
             <option value="Beverage">Beverage</option>
-        </select>
-       
-        <br />
+          </select>
 
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          onChange={handleNameChange}
-          value={name}
-        />
-        <br />
+          <br />
 
-        <label htmlFor="price">Price</label>
-        <input
-          type="number"
-          name="price"
-          onChange={handlePriceChange}
-          checked={price}
-        />
-        
-        <br />
-        <br />
-            <button className="home-main-button" type="submit">Add</button>
-            
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            onChange={handleNameChange}
+            value={name}
+          />
+          <br />
 
-        
-            
-    </form> 
-    </section>
+          <label htmlFor="price">Price</label>
+          <input
+            type="number"
+            name="price"
+            onChange={handlePriceChange}
+            checked={price}
+          />
+
+          <br />
+          <br />
+          <button className="home-main-button" type="submit">
+            Add
+          </button>
+        </form>
+      </section>
     </div>
-  )
+  );
 }
 
-export default AddFormProduct
+export default AddFormProduct;

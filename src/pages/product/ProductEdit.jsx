@@ -10,7 +10,7 @@ function ProductEdit() {
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -69,13 +69,13 @@ function ProductEdit() {
             <option value="Beverage">Beverage</option>
           </select>
           <section class="form-products">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            onChange={handleNameChange}
-            value={name}
-          />
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              onChange={handleNameChange}
+              value={name}
+            />
           </section>
 
           <label htmlFor="price">Price</label>
@@ -87,7 +87,6 @@ function ProductEdit() {
           />
 
           <button className="home-main-button">Edit</button>
-
         </form>
       </section>
     </div>

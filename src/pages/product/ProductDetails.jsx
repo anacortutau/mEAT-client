@@ -7,22 +7,22 @@ import {
 } from "../../services/product.services";
 import PreOrder from "../order/PreOrder";
 
-
-
 function ProductDetails(props) {
-  //1. creamos un estado
+  //1. status create
 
   const [productDetails, setProductDetails] = useState(null);
-  const {isAdmin} = useContext(AuthContext)
- 
+  const { isAdmin } = useContext(AuthContext);
+
   const { id } = useParams();
- 
+
   const navigate = useNavigate();
+
+  //function to add a pproduct to my basket
 
   const handlePreAdd = async (e) => {
     e.preventDefault();
 
-    props.addProductPre( { id: id, name: productDetails.name });
+    props.addProductPre({ id: id, name: productDetails.name });
   };
 
   const handleList = async (e) => {
@@ -30,13 +30,13 @@ function ProductDetails(props) {
     navigate("/product");
   };
 
-  //2. componentDidMount
+  //component did mount
 
   useEffect(() => {
     getProductDetails();
   }, []);
 
-  //3. funcion
+  //3. function view order details
 
   const getProductDetails = async () => {
     try {
@@ -64,43 +64,41 @@ function ProductDetails(props) {
 
   return (
     <>
-    
       <div>
-      <main class="home-main">
-         
-        <h3>Product Details</h3>
-        <h4>{productDetails.category}</h4>
-        <h4>{productDetails.name}</h4>
-        <h4>Price:{productDetails.price}€</h4>
-             
-         
-         </main>
-       
-        
+        <main class="home-main">
+          <h3>Product Details</h3>
+          <h4>{productDetails.category}</h4>
+          <h4>{productDetails.name}</h4>
+          <h4>Price:{productDetails.price}€</h4>
+        </main>
+
         <form>
-          <button class="home-main-button-about-add" onClick={handlePreAdd}>Add</button>
+          <button class="home-main-button-about-add" onClick={handlePreAdd}>
+            Add
+          </button>
         </form>
-        
-        
-        {isAdmin && <button class="home-main-button-about-delete" onClick={handleDelete}>Delete</button>}
-          
-           
-        <Link to={`/product/${id}/edit`}>
-         {isAdmin && <button class="home-main-button-about-edit">Edit</button>} 
-        </Link>
-        
 
-            
-        <button class="home-main-button-about-list" onClick={handleList}>Product list</button>
-        
-       
+        {isAdmin && (
+          <button class="home-main-button-about-delete" onClick={handleDelete}>
+            Delete
+          </button>
+        )}
+
+        <Link to={`/product/${id}/edit`}>
+          {isAdmin && <button class="home-main-button-about-edit">Edit</button>}
+        </Link>
+
+        <button class="home-main-button-about-list" onClick={handleList}>
+          Product list
+        </button>
       </div>
-    
 
       <div>
-        <PreOrder preProducts={props.allProductsOrder} preMenus= {props.allMenuOrder} />
+        <PreOrder
+          preProducts={props.allProductsOrder}
+          preMenus={props.allMenuOrder}
+        />
       </div>
-
     </>
   );
 }

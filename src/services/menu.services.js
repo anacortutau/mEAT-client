@@ -1,30 +1,36 @@
-import service from "./config.services"
+import service from "./config.services";
 
-// en este lugar añadimos todas las rutas llamadas al backend 
+// are the routes called to th backend
 
-const getAllMenuService = () =>{
+//type get
+const getAllMenuService = () => {
+  return service.get("/menu");
+};
 
-    return service.get("/menu")
-}
+//type post
+const addNewMenuService = (newMenu) => {
+  return service.post("/menu", newMenu);
+};
 
-//tipo post 
-const addNewMenuService = (newMenu) =>{
-    return service.post("/menu", newMenu)
-}
+//type get
+const getMenuDetailsService = (id) => {
+  return service.get(`/menu/${id}`);
+};
 
-const getMenuDetailsService = (id) =>{
-    return service.get(`/menu/${id}`)
-}
+// type delete
+const deleteMenuService = (id) => {
+  return service.delete(`/menu/${id}`);
+};
 
-const deleteMenuService =(id) =>{
-    return service.delete(`/menu/${id}`)
-}
+//type patch
+const patchMenuService = (id, editMenu) => {
+  return service.patch(`/menu/${id}`, editMenu);
+};
 
-const patchMenuService = (id, editMenu) =>{
-
-    return service.patch(`/menu/${id}`, editMenu)
-
-}
-
-
-export{getAllMenuService, addNewMenuService, getMenuDetailsService, deleteMenuService, patchMenuService}
+export {
+  getAllMenuService,
+  addNewMenuService,
+  getMenuDetailsService,
+  deleteMenuService,
+  patchMenuService,
+};

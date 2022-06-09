@@ -1,30 +1,27 @@
 .App {
   margin: 0;
   padding: 0;
- 
 }
 
- .form input{
+.form input {
   width: 500px;
   height: 30px;
   border-radius: 2px;
   border: 2px solid;
   margin-left: 600px;
-  
 }
 
-label{
+label {
   margin-left: 600px;
   font-size: 15px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 header .header-icons-container {
   width: 100%;
   height: 50px;
   display: grid;
-  background-color:black
-  
+  background-color: black;
 }
 
 header .header-icons-container .icons {
@@ -36,60 +33,49 @@ header .header-icons-container .icons {
   justify-content: space-between;
   justify-self: end;
   margin-right: 100px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-  
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-
-h1{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 70px;
   font-weight: 700px;
   letter-spacing: 10px;
   color: black;
   text-align: center;
 }
-.home-main-button{
+.home-main-button {
   width: 70px;
   height: 30px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 700px;
-  
- 
 }
 
-.home-main-button-signup{
+.home-main-button-signup {
   width: 100px;
   height: 40px;
   background: coral;
   font-weight: 700;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 600px;
- 
-
 }
-.home-main-button-login{
+.home-main-button-login {
   width: 100px;
   height: 40px;
   background: coral;
   font-weight: 700;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 60px;
- 
-
 }
 .home-main-button-family {
   width: 100px;
   height: 40px;
   background: coral;
   font-weight: 700;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 200px;
-  
-
 }
 
 .home-main-button-family-home {
@@ -97,238 +83,183 @@ h1{
   height: 40px;
   background: coral;
   font-weight: 700;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 200px;
-
 }
 
-.home-main-button-about{
+.home-main-button-about {
   width: 100px;
   height: 40px;
   background: coral;
   font-weight: 700;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 200px;
-
 }
 
-
-.form-login input{
+.form-login input {
   width: 200px;
   height: 30px;
   border-radius: 2px;
   border: 2px solid;
   margin-left: 30px;
-  
-
 }
-.category input{
+.category input {
   width: 200px;
   height: 30px;
   border-radius: 2px;
   border: 2px solid;
   margin-left: 30px;
-
-
 }
-.home-main-tex{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.home-main-tex {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 40px;
   font-weight: 100px;
   letter-spacing: 10px;
-  color:black;
+  color: black;
   text-align: center;
 }
-.home-main-tex-list{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.home-main-tex-list {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 40px;
   font-weight: 100px;
   letter-spacing: 10px;
-  color:black;
+  color: black;
   text-align: center;
   text-decoration: none;
-
 }
 
-h2{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+h2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 40px;
   font-weight: 700px;
   letter-spacing: 10px;
   color: black;
   text-align: center;
 }
-.container p{
-  
+.container p {
   justify-content: center;
   width: 500px;
   font-size: 30px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: bold;
   margin-left: 400px;
   margin-top: 60px;
   padding: 30px;
   text-align: center;
   text-shadow: 2px 2px 2px coral;
-  
-  
-
-  
-  
 }
 
-.create-product{
-
+.create-product {
   color: coral;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
- 
-  
-
 }
-.create-menu{
+.create-menu {
   color: coral;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: 200px;
   margin-left: 100px;
-  
-  
-
-
 }
 
-.form-pay{
- 
+.form-pay {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-left: 100px;
-
-  
-
-
 }
-.home-main-button-products{
+.home-main-button-products {
   width: 100px;
   height: 60px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  
-  
-
-
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.home-main-button-menus{
+.home-main-button-menus {
   width: 100px;
   height: 60px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
 
-
-} 
-
- .logo{
-
+.logo {
   margin-left: 200px;
   margin-top: 100px;
-  
- }
- .logoFamily{
-
-  
+}
+.logoFamily {
   margin-bottom: 200px;
   text-align: center;
-  
- }
- .logoAbout{
+}
+.logoAbout {
+  margin-bottom: 200px;
+  text-align: center;
+  margin-left: 700px;
+  margin-top: -200px;
+}
 
-    margin-bottom: 200px;
-    text-align: center;
-    margin-left: 700px;
-    margin-top: -200px;
-    
- }
-
- h3{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+h3 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 30px;
   font-weight: 50px;
   letter-spacing: 10px;
-  color:black;
+  color: black;
   text-align: center;
-
- }
- h4{
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+h4 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 20px;
   letter-spacing: 10px;
-  color:coral;
+  color: coral;
   margin-top: 40px;
   text-align: center;
+}
 
- }
-
- .home-main-button-about-add{
+.home-main-button-about-add {
   width: 400px;
   height: 50px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 500px;
+}
 
-
- }
-
- .home-main-button-about-delete{
+.home-main-button-about-delete {
   width: 60px;
   height: 50px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 1000px;
-
- }
- .home-main-button-about-edit{
+}
+.home-main-button-about-edit {
   width: 60px;
   height: 50px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 1000px;
-
- }
- .home-main-button-about-list{
+}
+.home-main-button-about-list {
   width: 60px;
   height: 50px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 1000px;
-
- }
- .home-main-button-products-buy{
+}
+.home-main-button-products-buy {
   width: 80px;
   height: 50px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-left: 600px;
-
- }
- .home-main-button-products-deleleOrder{
+}
+.home-main-button-products-deleleOrder {
   width: 80px;
   height: 50px;
   background: coral;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  
-
-
- }
-
-
-
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
 
 .App-logo {
   height: 40vmin;

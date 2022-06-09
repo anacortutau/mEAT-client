@@ -5,15 +5,12 @@ import AddFormProduct from "../../components/AddFormProduct";
 import { getAllProductService } from "../../services/product.services";
 import { AuthContext } from "../../context/auth.context";
 
-
 function ProductList(props) {
-  //1. Estado para la data
+  //status data
   const [allProducts, setAllProducts] = useState(null);
   const [buscando, setBuscando] = useState(true);
-  const {isAdmin} = useContext(AuthContext)
-  console.log(isAdmin)
- 
-  
+  const { isAdmin } = useContext(AuthContext);
+  console.log(isAdmin);
 
   const navigate = useNavigate();
 
@@ -23,13 +20,13 @@ function ProductList(props) {
     navigate("/");
   };
 
-  //2. componente DidMount
+  //2. componente did mount
 
   useEffect(() => {
     getAllProducts();
   }, []);
 
-  //3. La funcion que busca la data
+  // function finds the date
 
   const getAllProducts = async () => {
     try {
@@ -40,12 +37,9 @@ function ProductList(props) {
     } catch (error) {
       if (error.response.status === 401) {
         navigate("/login");
-      }else{
+      } else {
         navigate("/error");
-
       }
-
-     
     }
   };
 
@@ -66,26 +60,19 @@ function ProductList(props) {
             allProducts.map((eachProduct) => {
               return (
                 <div key={eachProduct._id}>
-
-                 
                   <section class="products">
                     <Link to={`/product/${eachProduct._id}/details`}>
-                  
-                  
                       <button className="home-main-button-products">
                         {eachProduct.name}
                       </button>
-                    
                     </Link>
                     <br />
                   </section>
-            
                 </div>
               );
             })}
         </ul>
-        {isAdmin && <AddFormProduct getAllProducts={getAllProducts} />  }
-        
+        {isAdmin && <AddFormProduct getAllProducts={getAllProducts} />}
 
         <form onSubmit={handleSubmit}>
           <button class="home-main-button" onClick="submit">

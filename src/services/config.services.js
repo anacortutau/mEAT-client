@@ -1,26 +1,21 @@
 import axios from "axios";
 
-//forma organizada de lo que seran las llamadas al backend
+//organize the calls to th backend
 
-const service= axios.create({
-    baseURL: `${process.env.REACT_APP_SERVER_URL}/api`
-})
+const service = axios.create({
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/api`,
+});
 
-// es donde hacemos codigo magia donde el token sera enviado al backend
-service.interceptors.request.use((config)=>{
+// do magic code where the token will be sent to th backend
+service.interceptors.request.use((config) => {
+  //look for the token in localStorage
+  const authToken = localStorage.getItem("authToken");
 
-    //buscar el token en localStorage
-    const authToken = localStorage.getItem("authToken")
+  if (authToken) {
+    config.headers = { authorization: `Bearer ${authToken}` };
+  }
 
-    if(authToken){
-        config.headers = {authorization: `Bearer ${authToken}`}
-    }
+  return config;
+});
 
-    return config
-
-})
-
-
-
-
-export default service
+export default service;

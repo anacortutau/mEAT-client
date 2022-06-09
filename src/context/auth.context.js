@@ -1,70 +1,67 @@
-import {createContext, useEffect, useState} from "react"
-import { verifyService } from "../services/auth.services"
+import { createContext, useEffect, useState } from "react";
+import { verifyService } from "../services/auth.services";
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
-function AuthWrapper (props) {
+function AuthWrapper(props) {
+  //1. status for date
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-    //todos los estados y funciones 
+  const authenticateUser = async () => {
+    setIsLoading(true);
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [isAdmin, setIsAdmin] = useState(false)
-    const [user, setUser] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
+    try {
+      //call route verify
+      const response = await verifyService();
 
+      console.log("el payload es:", response.data);
 
+      setIsLoggedIn(true);
 
-    const authenticateUser = async () =>{
-        setIsLoading(true)
+      if (response.data.adminRole === "admin") {
+        setIsAdmin(true);
+      }
+      setUser(response.data);
 
-        try{
-            //donde llamaremos a la ruta verify
-            const response = await verifyService()
-           
-            console.log("el payload es:", response.data)
-            console.log("============",isAdmin)
-            setIsLoggedIn(true)
-
-            if(response.data.adminRole === "admin"){
-                setIsAdmin(true)
-            }
-            setUser(response.data)
-           
-            setIsLoading(false)
-        }catch(error){
-            setIsLoggedIn(false)
-            setUser(null)
-            setIsAdmin(false)
-            setIsLoading(false)
-        }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoggedIn(false);
+      setUser(null);
+      setIsAdmin(false);
+      setIsLoading(false);
     }
+  };
 
-    const passedContext = {
-        isLoggedIn,
-        user,
-        isAdmin,
-        authenticateUser
-    }
+  const passedContext = {
+    isLoggedIn,
+    user,
+    isAdmin,
+    authenticateUser,
+  };
 
-    useEffect(()=>{
-        authenticateUser()
-    },[])
+  useEffect(() => {
+    authenticateUser();
+  }, []);
 
-    //espera mientras verificamos al usuario antes de renderizar a la app
-    if(isLoading === true){
-        return <div className="App"><h3>Verificando usuario</h3></div>
-    }
-
-    // esto es toda nuestra aplicacion
+  //wait while we verify the user before rendering to th app
+  if (isLoading === true) {
     return (
-        <AuthContext.Provider value = {passedContext}>
-            {props.children}
-        </AuthContext.Provider>
-    )
+      <div className="App">
+        <h3>Verificando usuario</h3>
+      </div>
+    );
+  }
+
+  // this is all our application
+  return (
+    <AuthContext.Provider value={passedContext}>
+      {props.children}
+    </AuthContext.Provider>
+  );
 }
 
-export {AuthContext, AuthWrapper}
-
-
-
+export { AuthContext, AuthWrapper };
