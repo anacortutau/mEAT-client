@@ -107,7 +107,7 @@ function OrderList(props) {
             </div>
          
           <form>
-            <button onClick={handleBuy}>To Buy</button>
+            <button className= "home-main-button-products-buy" onClick={handleBuy}>To Buy</button>
           </form>
            {/* todas mis preorder */}
 
@@ -131,7 +131,7 @@ function OrderList(props) {
                   <br />
                   <br />
 
-                  <button id={eachOrder._id} onClick={handleDelete}>Delete Order</button>
+                  <button className= "home-main-button-products-deleleOrder" id={eachOrder._id} onClick={handleDelete}>Delete Order</button>
 
                   {/* <Link to={`/order/${eachOrder._id}/details`}>Details Menu</Link>  */}
                 </div>
