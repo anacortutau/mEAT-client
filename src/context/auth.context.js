@@ -23,6 +23,7 @@ function AuthWrapper (props) {
             const response = await verifyService()
            
             console.log("el payload es:", response.data)
+            console.log("============",isAdmin)
             setIsLoggedIn(true)
 
             if(response.data.adminRole === "admin"){

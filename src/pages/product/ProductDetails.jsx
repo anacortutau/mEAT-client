@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
 import {
   deleteProductService,
   getProductDetailsService,
@@ -12,6 +13,7 @@ function ProductDetails(props) {
   //1. creamos un estado
 
   const [productDetails, setProductDetails] = useState(null);
+  const {isAdmin} = useContext(AuthContext)
  
   const { id } = useParams();
  
@@ -80,11 +82,11 @@ function ProductDetails(props) {
         </form>
         
         
-        <button class="home-main-button-about-delete" onClick={handleDelete}>Delete</button>
+        {isAdmin && <button class="home-main-button-about-delete" onClick={handleDelete}>Delete</button>}
           
            
         <Link to={`/product/${id}/edit`}>
-          <button class="home-main-button-about-edit">Edit</button>
+         {isAdmin && <button class="home-main-button-about-edit">Edit</button>} 
         </Link>
         
 

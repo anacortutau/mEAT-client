@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import {
   getProductDetailsService,
   patchProductService,
@@ -9,6 +10,7 @@ function ProductEdit() {
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -84,7 +86,8 @@ function ProductEdit() {
             checked={price}
           />
 
-          <button className="home-main-button" type="submit">Edit</button>
+          <button className="home-main-button">Edit</button>
+
         </form>
       </section>
     </div>

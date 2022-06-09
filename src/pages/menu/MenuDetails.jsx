@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteMenuService, getMenuDetailsService } from '../../services/menu.services'
 import PreOrder from '../order/PreOrder'
-import ProductList from '../product/ProductList'
+import { AuthContext } from "../../context/auth.context";
+
 
 function MenuDetails(props) {
 
       //1. creamos un estado
 
       const [menuDetails, setMenuDetails] = useState(null)
+      const{isAdmin} = useContext(AuthContext)
       const {id}= useParams()
     
       const navigate = useNavigate()
@@ -81,9 +83,9 @@ function MenuDetails(props) {
 
         <form><button class="home-main-button-about-add" onClick={handlePreAdd} >Add</button></form>
 
-        <button class="home-main-button-about-delete" onClick={handleDelete}>Delete</button>
+       {isAdmin &&  <button class="home-main-button-about-delete" onClick={handleDelete}>Delete</button>}
 
-        <Link to={`/menu/${id}/edit`}><button class="home-main-button-about-edit">Edit</button></Link>
+        {isAdmin && <Link to={`/menu/${id}/edit`}><button class="home-main-button-about-edit">Edit</button></Link>}
 
         <button class="home-main-button-about-list" onClick={handleList}>Menu list</button>
     </div>

@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { getMenuDetailsService, patchMenuService } from '../../services/menu.services';
 import { getAllProductService } from '../../services/product.services';
+
 
 function MenuEdit() {
 
     const [name, setName] = useState("");
     const [products, setProducts] = useState([]);
     const [price, setPrice]= useState(0)
+    
+  
     const navigate= useNavigate()
     const {id} = useParams()
 
@@ -108,7 +111,8 @@ function MenuEdit() {
         /> 
         </section> 
 
-            <button className="home-main-button" type="submit">Edit</button>
+         <button className="home-main-button" type="submit">Edit</button>
+         
         </form>
     </div>
   )

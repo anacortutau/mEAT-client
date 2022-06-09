@@ -84,7 +84,7 @@ function ProductList(props) {
               );
             })}
         </ul>
-        {isAdmin ? <AddFormProduct getAllProducts={getAllProducts} /> : "" }
+        {isAdmin && <AddFormProduct getAllProducts={getAllProducts} />  }
         
 
         <form onSubmit={handleSubmit}>
