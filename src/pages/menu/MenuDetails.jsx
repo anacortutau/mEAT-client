@@ -4,21 +4,20 @@ import { deleteMenuService, getMenuDetailsService } from '../../services/menu.se
 import PreOrder from '../order/PreOrder'
 import ProductList from '../product/ProductList'
 
-function MenuDetails() {
+function MenuDetails(props) {
 
       //1. creamos un estado
 
       const [menuDetails, setMenuDetails] = useState(null)
       const {id}= useParams()
-      const[allMenuOrder, setAllMenuOrder] = useState([])
+    
       const navigate = useNavigate()
 
       
 
       const handlePreAdd= async (e)=>{
           e.preventDefault()
-
-          setAllMenuOrder([...allMenuOrder, {id: id, name: menuDetails.name} ])
+          props.addMenuPre( {id: id, name: menuDetails.name})
       }
 
 
@@ -90,7 +89,7 @@ function MenuDetails() {
     </div>
 
     <div>
-        <PreOrder preMenus={allMenuOrder} />
+    <PreOrder preProducts={props.allProductsOrder} preMenus= {props.allMenuOrder} />
       </div>
 
 

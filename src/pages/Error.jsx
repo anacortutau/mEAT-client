@@ -5,6 +5,10 @@ function Error() {
     <div>
 
         <h3>Error 500. Problemas con el servidor</h3>
+
+      
+
+
     </div>
   )
 }

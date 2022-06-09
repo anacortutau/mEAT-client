@@ -24,11 +24,35 @@ import MenuEdit from './pages/menu/MenuEdit';
 import OrderList from './pages/order/OrderList';
 import OrderDetails from './pages/order/OrderDetails';
 import OrderEdit from './pages/order/OrderEdit';
+import Private from './components/Private'
+import NotFound from './pages/NotFound';
+import { useState } from 'react';
+
 
 
 
 
 function App() {
+
+  const [allProductsOrder, setProductsOrder] = useState([]);
+  const [allMenuOrder, setAllMenuOrder] = useState([]);
+  const addProductPre = (product) => {
+    console.log(product);
+    setProductsOrder([...allProductsOrder, product]);
+  };
+
+  const removeProductPre = (id) => {
+    setProductsOrder(allProductsOrder.filter((product) => product.id !== id));
+  };
+
+  const addMenuPre = (menu) => {
+    setAllMenuOrder([...allMenuOrder, menu]);
+  };
+
+  const removeMenuPre = (id) => {
+    setAllMenuOrder(allMenuOrder.filter((menu) => menu.id !== id));
+  };
+
   return (
     <div className="App">
 
@@ -37,14 +61,14 @@ function App() {
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/product" element={<ProductList /> } />
-      <Route path="/product/:id/details" element={<ProductDetails />} />
-      <Route path="/product/:id/edit" element={<ProductEdit />} />
+      <Route path="/product/:id/details" element={<Private><ProductDetails addProductPre={addProductPre} allProductsOrder={allProductsOrder} allMenuOrder={allMenuOrder} /></Private>} />
+      <Route path="/product/:id/edit" element={<Private><ProductEdit/></Private>} />
 
       <Route path="/menu" element={<MenuList /> } />
-      <Route path="/menu/:id/details" element={<MenuDetails />} />
+      <Route path="/menu/:id/details" element={<Private><MenuDetails addMenuPre={addMenuPre} allProductsOrder={allProductsOrder} allMenuOrder={allMenuOrder}/></Private>} />
       <Route path="/menu/:id/edit" element={<MenuEdit />} />
 
-      <Route path="/order" element={<OrderList />} />
+      <Route path="/order" element={<OrderList allProductsOrder={allProductsOrder} allMenuOrder={allMenuOrder}/>} />
       <Route path="/order/:id/details" element={<OrderDetails />} />
       <Route path="/order/:id/edit" element={<OrderEdit />} />
 
@@ -57,6 +81,7 @@ function App() {
 
       {/* error FE routes */}
       <Route path="/error" element={<Error />} />
+      <Route path="*" element={<NotFound />} />
 
 
       </Routes>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useContext } from "react";
 import { loginService, verifyService } from "../../services/auth.services";
 import {AuthContext} from "../../context/auth.context.js";
-import {NavLink, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 function Login() {
 
@@ -12,7 +12,6 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    //const [isAdmin, setIsAdmin] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
   
 

@@ -10,7 +10,9 @@ function ProductList(props) {
   //1. Estado para la data
   const [allProducts, setAllProducts] = useState(null);
   const [buscando, setBuscando] = useState(true);
-  const {isLoggedIn} = useContext(AuthContext)
+  const {isAdmin} = useContext(AuthContext)
+  console.log(isAdmin)
+ 
   
 
   const navigate = useNavigate();
@@ -82,7 +84,8 @@ function ProductList(props) {
               );
             })}
         </ul>
-        <AddFormProduct getAllProducts={getAllProducts} />
+        {isAdmin ? <AddFormProduct getAllProducts={getAllProducts} /> : "" }
+        
 
         <form onSubmit={handleSubmit}>
           <button class="home-main-button" onClick="submit">

@@ -5,25 +5,22 @@ import {
   getProductDetailsService,
 } from "../../services/product.services";
 import PreOrder from "../order/PreOrder";
-import { AuthContext } from "../../context/auth.context";
 
 
-function ProductDetails() {
+
+function ProductDetails(props) {
   //1. creamos un estado
 
   const [productDetails, setProductDetails] = useState(null);
-  const [allProductsOrder, setProductsOrder] = useState([]);
+ 
   const { id } = useParams();
-  const {isLoggedIn} = useContext(AuthContext)
+ 
   const navigate = useNavigate();
 
   const handlePreAdd = async (e) => {
     e.preventDefault();
 
-    setProductsOrder([
-      ...allProductsOrder,
-      { id: id, name: productDetails.name },
-    ]);
+    props.addProductPre( { id: id, name: productDetails.name });
   };
 
   const handleList = async (e) => {
@@ -77,29 +74,29 @@ function ProductDetails() {
          
          </main>
        
-        {isLoggedIn &&
+        
         <form>
           <button class="home-main-button-about-add" onClick={handlePreAdd}>Add</button>
         </form>
-        }
-        {isLoggedIn && 
+        
+        
         <button class="home-main-button-about-delete" onClick={handleDelete}>Delete</button>
-        }   
-        {isLoggedIn &&    
+          
+           
         <Link to={`/product/${id}/edit`}>
           <button class="home-main-button-about-edit">Edit</button>
         </Link>
-        } 
+        
 
-        {isLoggedIn &&      
+            
         <button class="home-main-button-about-list" onClick={handleList}>Product list</button>
-         } 
+        
        
       </div>
     
 
       <div>
-        <PreOrder preProducts={allProductsOrder} />
+        <PreOrder preProducts={props.allProductsOrder} preMenus= {props.allMenuOrder} />
       </div>
 
     </>

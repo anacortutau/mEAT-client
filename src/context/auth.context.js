@@ -9,8 +9,10 @@ function AuthWrapper (props) {
     //todos los estados y funciones 
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(false)
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+
 
 
     const authenticateUser = async () =>{
@@ -19,10 +21,16 @@ function AuthWrapper (props) {
         try{
             //donde llamaremos a la ruta verify
             const response = await verifyService()
-            console.log("Token valido")
+           
             console.log("el payload es:", response.data)
             setIsLoggedIn(true)
+
+            if(response.data.adminRole === "admin"){
+                setIsAdmin(true)
+                console.log("entro en el if")
+            }
             setUser(response.data)
+           
             setIsLoading(false)
         }catch(error){
             setIsLoggedIn(false)
@@ -34,6 +42,7 @@ function AuthWrapper (props) {
     const passedContext = {
         isLoggedIn,
         user,
+        isAdmin,
         authenticateUser
     }
 

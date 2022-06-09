@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  addNewOrderService,
   deleteOrderService,
   getAllOrderService,
 } from "../../services/order.services";
+import PreOrder from "./PreOrder";
 
 //SACAR EL PEDIDO FILTRANDO POR EL NOMBRE DEL MENU Y EL NOMBRE DEL PRODUCTO
 //FALTA QUE FILTRE TAMBIEN POR EL NOMBRE, APELLIDOS, DIRRECION DEL USUARIO
@@ -14,7 +16,7 @@ function OrderList(props) {
   const [allOrder, setAllOrder] = useState(null);
   const [buscando, setBuscando] = useState(true);
   const { id } = useParams();
-  const { preProducts, preMenus } = props;
+  
 
   //   const [name, setName] =useState(null)
   //   const[number, setNumber] = useState(0)
@@ -26,11 +28,32 @@ function OrderList(props) {
 
   const handleBuy = async (e) => {
     e.preventDefault();
+
+    const products = props.allProductsOrder.map((eachProduct)=> eachProduct.id)
+    const menus = props.allMenuOrder.map((eachMenu)=> eachMenu.id)
+    const basket = {
+      id: id,
+      products :products,
+      menus: menus
+      
+    }
+
+
+    try{
+
+      await addNewOrderService(basket)
+
+    }catch(error){
+
+    }
+
+    
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (e) => {
+    e.preventDefault()
     try {
-      await deleteOrderService(id);
+      await deleteOrderService(e.target.id);
       navigate("/order");
     } catch (error) {
       navigate("/error");
@@ -79,6 +102,19 @@ function OrderList(props) {
         <main class="home-main">
           <h3 class="home-main-tex">Take Home</h3>
 
+            <div>
+            <PreOrder preProducts={props.allProductsOrder} preMenus= {props.allMenuOrder} />
+            </div>
+         
+          <form>
+            <button onClick={handleBuy}>To Buy</button>
+          </form>
+           {/* todas mis preorder */}
+
+
+         
+
+            {/* todas mis ordenes */}
           {allOrder === null && <h3>...Loading</h3>}
           {allOrder !== null &&
             allOrder.map((eachOrder) => {
@@ -95,18 +131,16 @@ function OrderList(props) {
                   <br />
                   <br />
 
+                  <button id={eachOrder._id} onClick={handleDelete}>Delete Order</button>
+
                   {/* <Link to={`/order/${eachOrder._id}/details`}>Details Menu</Link>  */}
                 </div>
               );
             })}
 
-          <form>
-            <button onClick={handleBuy}>To Buy</button>
-          </form>
-
           <br />
 
-          <button onClick={handleDelete}>Delete Order</button>
+        
           
 
           {/* <form onSubmit={handleSubmit}>

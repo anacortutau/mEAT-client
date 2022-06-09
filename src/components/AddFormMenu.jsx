@@ -88,6 +88,7 @@ function AddFormMenu(props) {
               onChange={handleNameChange}
               value={name}
             />
+            
 
             <section class="form-menu">
 

@@ -78,6 +78,7 @@ function MenuEdit() {
         </h3>
 
         <form onSubmit={handleSubmit}>
+        <section class="form-menu">
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -85,7 +86,7 @@ function MenuEdit() {
           onChange={hanldeNameChange}
           value={name}
         />
-
+        <section class="form-menu">
         <label htmlFor="products">Products</label>
         <select name="products" value={products} onChange={handleProductsChange}>
         {products.map((eachProduct) => {
@@ -96,7 +97,7 @@ function MenuEdit() {
                 })}
 
        </select>
-
+       </section>
 
         <label htmlFor="price">Price</label>
         <input
@@ -104,9 +105,10 @@ function MenuEdit() {
           name="price"
           onChange={handlePriceChange}
           checked={price}
-        />  
+        /> 
+        </section> 
 
-            <button type="submit">Edit</button>
+            <button className="home-main-button" type="submit">Edit</button>
         </form>
     </div>
   )
