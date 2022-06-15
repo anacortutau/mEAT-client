@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addNewMenuService } from "../services/menu.services";
-import { getAllProductService } from "../services/product.services";
+import { getAllProductService, uploadService } from "../services/product.services";
 
 function AddFormMenu(props) {
   //1. status for date
   const [name, setName] = useState("");
   const [products, setProducts] = useState([]);
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]);
   const [price, setPrice] = useState(0);
+  const [image, setImage] = useState("");
 
   const navigate = useNavigate();
 
   const handleNameChange = (e) => setName(e.target.value);
 
   const handleItems = (e) => {
-    setItems(e.target.value);
+    
+    let productSelect = Array.from(e.target.selectedOptions, option => option.value);
+    
+    setItems(productSelect);
   };
 
   const handlePriceChange = (e) => setPrice(e.target.value);
@@ -47,6 +51,7 @@ function AddFormMenu(props) {
         name,
         products: items,
         price,
+        image
       };
 
       await addNewMenuService(newMenu);
@@ -57,6 +62,29 @@ function AddFormMenu(props) {
       navigate("/error");
     }
   };
+
+  const handleImageChange = async (e)=>{
+
+    console.log(e.target.files[0])
+
+    const uploadForm = new FormData()
+    uploadForm.append("image", e.target.files[0])
+
+     try{
+
+      const response = await uploadService(uploadForm)
+      console.log(response.data)
+      setImage(response.data)
+
+     }catch{
+
+        navigate("/error")
+
+     }
+
+
+
+  }
 
   return (
     <div>
@@ -76,7 +104,7 @@ function AddFormMenu(props) {
 
           <section class="form-menu">
             <label htmlFor="products">Products</label>
-            <select name="products" onChange={handleItems} multiple="true">
+            <select name="products[]" onChange={handleItems} multiple>
               {products.map((eachProduct) => {
                 return (
                   <option key={eachProduct._id} value={eachProduct._id}>
@@ -94,6 +122,12 @@ function AddFormMenu(props) {
             onChange={handlePriceChange}
             checked={price}
           />
+
+          <label htmlFor="image">Picture</label>
+          <input type="file"  name="image" onChange={handleImageChange}/>
+
+          <img src={image} alt="picture" />
+
           <br />
           <button className="home-main-button">Add</button>
         </form>

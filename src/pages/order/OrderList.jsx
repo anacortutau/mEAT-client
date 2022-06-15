@@ -9,10 +9,13 @@ import PreOrder from "./PreOrder";
 
 function OrderList(props) {
   // status of the date
-
+  console.log(props)
   const [allOrder, setAllOrder] = useState(null);
   const [buscando, setBuscando] = useState(true);
+  const [totalPrice, setTotalPrice]= useState(0)
+
   const { id } = useParams();
+  
 
   const navigate = useNavigate();
 
@@ -20,21 +23,37 @@ function OrderList(props) {
 
   const handleBuy = async (e) => {
     e.preventDefault();
-
+    console.log(props.allProductsOrder)
     const products = props.allProductsOrder.map(
-      (eachProduct) => eachProduct.id
+      (eachProduct) => eachProduct._id
     );
-    const menus = props.allMenuOrder.map((eachMenu) => eachMenu.id);
+    console.log(products)
+    const menus = props.allMenuOrder.map((eachMenu) => eachMenu._id);
     const basket = {
       id: id,
       products: products,
       menus: menus,
+      price: totalOrder()
     };
 
     try {
       await addNewOrderService(basket);
     } catch (error) {}
   };
+
+  const totalOrder = () =>{
+
+    if(props.allProductsOrder.length > 0){
+      console.log(props.allProductsOrder)
+      const totalPriceProduct = props.allProductsOrder.reduce((acum, product)=> acum + product.price,0)
+      const totalPriceMenu = props.allMenuOrder.reduce((acum, menu)=> acum + menu.price,0)
+      const totalOrder = totalPriceProduct + totalPriceMenu
+      return totalOrder;
+
+    }
+
+  
+  }
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -86,7 +105,10 @@ function OrderList(props) {
               preProducts={props.allProductsOrder}
               preMenus={props.allMenuOrder}
             />
+            <p>{totalOrder()}</p>
           </div>
+
+
 
           <form>
             <button

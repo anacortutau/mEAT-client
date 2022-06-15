@@ -19,7 +19,7 @@ function MenuDetails(props) {
 
   const handlePreAdd = async (e) => {
     e.preventDefault();
-    props.addMenuPre({ id: id, name: menuDetails.name });
+    props.addMenuPre(menuDetails);
   };
 
   const handleList = async (e) => {
@@ -64,6 +64,7 @@ function MenuDetails(props) {
       <div>
         <h3>Menu Details</h3>
         <h4>{menuDetails.name}</h4>
+        <img src={menuDetails.imagenUrl} style={{width:"200px"}} alt="picture" />
 
         {menuDetails.products.map((eachProduct) => {
           return <li key={eachProduct._id}>{eachProduct.name}</li>;

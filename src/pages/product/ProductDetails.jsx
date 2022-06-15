@@ -22,7 +22,7 @@ function ProductDetails(props) {
   const handlePreAdd = async (e) => {
     e.preventDefault();
 
-    props.addProductPre({ id: id, name: productDetails.name });
+    props.addProductPre(productDetails);
   };
 
   const handleList = async (e) => {
@@ -70,6 +70,7 @@ function ProductDetails(props) {
           <h4>{productDetails.category}</h4>
           <h4>{productDetails.name}</h4>
           <h4>Price:{productDetails.price}€</h4>
+          <img src={productDetails.imagenUrl} style={{width:"200px"}} alt="picture"/>
         </main>
 
         <form>

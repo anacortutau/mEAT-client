@@ -1,12 +1,14 @@
+import { getNextKeyDef } from "@testing-library/user-event/dist/keyboard/getNextKeyDef";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addNewProductService } from "../services/product.services";
+import { addNewProductService, uploadService } from "../services/product.services";
 
 function AddFormProduct(props) {
   //1. status for date
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [image, setImage] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,6 +26,7 @@ function AddFormProduct(props) {
         category,
         name,
         price,
+        image
       };
 
       await addNewProductService(newProduct);
@@ -33,6 +36,29 @@ function AddFormProduct(props) {
       navigate("/error");
     }
   };
+
+  const handleImageChange = async (e)=>{
+
+    console.log(e.target.files[0])
+
+    const uploadForm = new FormData()
+    uploadForm.append("image", e.target.files[0])
+
+     try{
+
+      const response = await uploadService(uploadForm)
+      console.log(response.data)
+      setImage(response.data)
+
+     }catch{
+
+        navigate("/error")
+
+     }
+
+
+
+  }
 
   return (
     <div>
@@ -75,6 +101,11 @@ function AddFormProduct(props) {
             onChange={handlePriceChange}
             checked={price}
           />
+
+          <label htmlFor="image">Picture</label>
+          <input type="file"  name="image" onChange={handleImageChange}/>
+
+          <img src={image} alt="picture" />
 
           <br />
           <br />

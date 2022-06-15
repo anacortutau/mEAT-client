@@ -24,10 +24,15 @@ const patchProductService = (id, editProduct) => {
   return service.patch(`/product/${id}`, editProduct);
 };
 
+const uploadService = (uploadForm)=>{
+  return service.post("/uploader", uploadForm)
+}
+
 export {
   getAllProductService,
   addNewProductService,
   getProductDetailsService,
   deleteProductService,
   patchProductService,
+  uploadService
 };

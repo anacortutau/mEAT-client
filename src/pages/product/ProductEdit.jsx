@@ -51,6 +51,8 @@ function ProductEdit() {
       navigate("/error");
     }
   };
+
+
   return (
     <div>
       <h3>Edit Product</h3>
@@ -85,6 +87,8 @@ function ProductEdit() {
             onChange={handlePriceChange}
             checked={price}
           />
+
+         
 
           <button className="home-main-button">Edit</button>
         </form>
