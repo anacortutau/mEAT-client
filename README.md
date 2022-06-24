@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+# Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+mEAT
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Food service where the user can buy products both individually and menus.
+The user can add the products and menus to his shopping cart.
+
 
 ### `npm start`
 
